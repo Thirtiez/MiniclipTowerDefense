@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
 {
     [CreateAssetMenu(menuName = "Data/Dictionaries")]
-    public class Dictionaries : ScriptableObject
+    public class Dictionaries : SerializedScriptableObject
     {
         [Header("Tiles")]
         [SerializeField]

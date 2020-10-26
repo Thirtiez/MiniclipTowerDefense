@@ -1,6 +1,6 @@
 ﻿namespace Thirties.Miniclip.TowerDefense
 {
-    public class RewardView : BaseView
+    public class ResultView : BaseView
     {
         #region Inspector fields
 

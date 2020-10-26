@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Animations;
+using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
 {
@@ -13,8 +14,8 @@ namespace Thirties.Miniclip.TowerDefense
         private ImageFader imageFader;
         public ImageFader ImageFader { get { return imageFader; } }
         [SerializeField]
-        private ImageFader audioFader;
-        public ImageFader AudioFader { get { return audioFader; } }
+        private AudioFader audioFader;
+        public AudioFader AudioFader { get { return audioFader; } }
 
         [Header("Data")]
         [SerializeField]

@@ -2,6 +2,7 @@
 
 namespace Thirties.Miniclip.TowerDefense
 {
+    [RequireComponent(typeof(AudioSource))]
     public class AudioFader : BaseFader<AudioSource>
     {
         protected override float targetValue

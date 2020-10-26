@@ -10,15 +10,7 @@ namespace Thirties.Miniclip.TowerDefense
         public static readonly int Splash = Animator.StringToHash("Splash");
         public static readonly int MainMenu = Animator.StringToHash("MainMenu");
         public static readonly int Game = Animator.StringToHash("Game");
-        public static readonly int Reward = Animator.StringToHash("Reward");
-
-        public static Dictionary<string, int> SceneToTrigger = new Dictionary<string, int>()
-        {
-            { "00_Splash", Splash },
-            { "01_MainMenu", MainMenu },
-            { "02_Game", Game },
-            { "03_Reward", Reward },
-        };
+        public static readonly int Result = Animator.StringToHash("Result");
     }
 
     public static class Messages

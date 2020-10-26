@@ -10,7 +10,7 @@ namespace Thirties.Miniclip.TowerDefense
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             string sceneName = SceneManager.GetActiveScene().name;
-            int trigger = FSMTrigger.SceneToTrigger[sceneName];
+            int trigger = Animator.StringToHash(sceneName.Substring(3));
 
             GoTo(trigger);
         }

@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 namespace Thirties.Miniclip.TowerDefense
 {
+    [RequireComponent(typeof(GraphicRaycaster))]
+    [RequireComponent(typeof(Image))]
     public class ImageFader : BaseFader<Image>
     {
         [SerializeField]

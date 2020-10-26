@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Thirties.Miniclip.TowerDefense
 {
     public class SceneLoaderState : BaseState
     {
-        [Header("Settings")]
         [SerializeField]
         private SceneField sceneToLoad;
 

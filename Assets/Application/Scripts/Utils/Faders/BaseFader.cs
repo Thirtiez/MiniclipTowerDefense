@@ -20,8 +20,6 @@ namespace Thirties.Miniclip.TowerDefense
         private float fadeInValue = 1f;
         [SerializeField]
         private float defaultFadeTime = 0.5f;
-        [SerializeField]
-        private bool startAtFadeOut = false;
 
         protected abstract float targetValue { get; }
 

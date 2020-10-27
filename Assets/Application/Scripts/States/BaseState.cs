@@ -7,6 +7,7 @@ namespace Thirties.Miniclip.TowerDefense
     {
         protected ApplicationController applicationController;
         protected ImageFader imageFader;
+        protected AudioFader audioFader;
 
         private Animator fsm;
 
@@ -20,6 +21,7 @@ namespace Thirties.Miniclip.TowerDefense
             {
                 applicationController = ApplicationController.Instance;
                 imageFader = applicationController.ImageFader;
+                audioFader = applicationController.AudioFader;
             }
         }
 

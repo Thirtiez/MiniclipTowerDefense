@@ -30,7 +30,6 @@ namespace Thirties.Miniclip.TowerDefense
             if (Instance == null)
             {
                 InitializeLog();
-                InitializeFaders();
 
                 DontDestroyOnLoad(this);
                 Instance = this;
@@ -48,11 +47,6 @@ namespace Thirties.Miniclip.TowerDefense
 #else
             Debug.unityLogger.logEnabled = false;
 #endif
-        }
-
-        private void InitializeFaders()
-        {
-            imageFader.gameObject.SetActive(false);
         }
     }
 }

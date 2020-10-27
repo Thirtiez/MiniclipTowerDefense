@@ -14,7 +14,10 @@ namespace Thirties.Miniclip.TowerDefense
 
             if (view != null)
             {
-                view.StartingGame += GoForward;
+                imageFader.FadeIn();
+                audioFader.FadeIn();
+
+                view.StartingGame += StartGame;
             }
         }
 
@@ -22,10 +25,16 @@ namespace Thirties.Miniclip.TowerDefense
         {
             if (view != null)
             {
-                view.StartingGame -= GoForward;
+                view.StartingGame -= StartGame;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);
+        }
+
+        private void StartGame()
+        {
+            imageFader.FadeOut(GoForward);
+            audioFader.FadeOut();
         }
     }
 }

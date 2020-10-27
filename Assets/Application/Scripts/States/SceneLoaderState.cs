@@ -13,7 +13,7 @@ namespace Thirties.Miniclip.TowerDefense
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
-            if (SceneManager.GetActiveScene().name != sceneToLoad)
+            if (SceneManager.GetActiveScene().name != sceneToLoad.SceneName)
             {
                 applicationController.CurrentView = null;
                 LoadScene();
@@ -28,13 +28,13 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void LoadScene()
         {
-            Debug.Log($"Loading scene {sceneToLoad}...");
+            Debug.Log($"Loading scene {sceneToLoad.SceneName}...");
 
-            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+            SceneManager.LoadScene(sceneToLoad.SceneName, LoadSceneMode.Single);
             Resources.UnloadUnusedAssets();
             System.GC.Collect();
 
-            Debug.Log($"Scene {sceneToLoad} succesfuly loaded");
+            Debug.Log($"Scene {sceneToLoad.SceneName} succesfuly loaded");
         }
     }
 }

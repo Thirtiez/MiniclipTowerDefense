@@ -14,7 +14,8 @@ namespace Thirties.Miniclip.TowerDefense
 
             if (view != null)
             {
-
+                imageFader.FadeIn();
+                audioFader.FadeIn();
             }
         }
 

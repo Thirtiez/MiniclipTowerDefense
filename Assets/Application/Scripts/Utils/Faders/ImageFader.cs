@@ -20,18 +20,18 @@ namespace Thirties.Miniclip.TowerDefense
             targetComponent.color = newColor;
         }
 
-        public override void FadeOut(UnityAction onCompleted, float? time = null)
+        public override void FadeOut(UnityAction onCompleted = null, float? time = null)
         {
-            canvasRaycaster.enabled = false;
-
             base.FadeOut(onCompleted, time);
+
+            canvasRaycaster.enabled = true;
         }
 
-        public override void FadeIn(UnityAction onCompleted, float? time = null)
+        public override void FadeIn(UnityAction onCompleted = null, float? time = null)
         {
             base.FadeIn(onCompleted, time);
 
-            canvasRaycaster.enabled = true;
+            canvasRaycaster.enabled = false;
         }
     }
 }

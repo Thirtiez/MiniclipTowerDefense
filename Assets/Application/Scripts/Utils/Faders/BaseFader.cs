@@ -46,7 +46,7 @@ namespace Thirties.Miniclip.TowerDefense
             onComplete?.Invoke();
         }
 
-        public virtual void FadeIn(UnityAction onCompleted, float? time = null)
+        public virtual void FadeIn(UnityAction onCompleted = null, float? time = null)
         {
             if (fadeCoroutine != null)
             {
@@ -56,7 +56,7 @@ namespace Thirties.Miniclip.TowerDefense
             fadeCoroutine = StartCoroutine(FadeCoroutine(targetValue, fadeInValue, time ?? defaultFadeTime, onCompleted));
         }
 
-        public virtual void FadeOut(UnityAction onCompleted, float? time = null)
+        public virtual void FadeOut(UnityAction onCompleted = null, float? time = null)
         {
             if (fadeCoroutine != null)
             {
@@ -66,7 +66,7 @@ namespace Thirties.Miniclip.TowerDefense
             fadeCoroutine = StartCoroutine(FadeCoroutine(targetValue, fadeOutValue, time ?? defaultFadeTime, onCompleted));
         }
 
-        public virtual void Blink(UnityAction onCompleted, float? time = null)
+        public virtual void Blink(UnityAction onCompleted = null, float? time = null)
         {
             if (fadeCoroutine != null)
             {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
 {
@@ -16,7 +14,7 @@ namespace Thirties.Miniclip.TowerDefense
 
             if (view != null)
             {
-
+                view.StartingGame += GoForward;
             }
         }
 
@@ -24,7 +22,7 @@ namespace Thirties.Miniclip.TowerDefense
         {
             if (view != null)
             {
-
+                view.StartingGame -= GoForward;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);

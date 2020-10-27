@@ -623,7 +623,16 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    7: ODIN_INSPECTOR;ODIN_INSPECTOR_3
+    1: TextMeshPro
+    4: TextMeshPro
+    7: ODIN_INSPECTOR;ODIN_INSPECTOR_3;TextMeshPro
+    13: TextMeshPro
+    19: TextMeshPro
+    21: TextMeshPro
+    25: TextMeshPro
+    26: TextMeshPro
+    27: TextMeshPro
+    28: TextMeshPro
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

@@ -7,15 +7,26 @@ namespace Thirties.Miniclip.TowerDefense
     {
         #region Inspector fields
 
-        [Header("Input")]
+        [Header("Camera")]
         [SerializeField]
-        private float panSensitivity = 0.05f;
+        private float panSensitivity = 0.5f;
         [SerializeField]
         private float zoomSensitivity = 0.2f;
+
+        [Header("Grid")]
+        [SerializeField]
+        private Grid grid;
+        [SerializeField]
+        private LineRenderer gridLine;
+        [SerializeField]
+        private Vector2Int gridDimensions = new Vector2Int(10, 10);
 
         #endregion
 
         #region Private fields
+
+        private Vector2Int minGridDimensions => new Vector2Int(-gridDimensions.x / 2, -gridDimensions.y / 2);
+        private Vector2Int maxGridDimensions => new Vector2Int(gridDimensions.x / 2, gridDimensions.y / 2);
 
         #endregion
 
@@ -32,6 +43,24 @@ namespace Thirties.Miniclip.TowerDefense
 
         protected override void Initialize()
         {
+            for (int i = minGridDimensions.x; i <= maxGridDimensions.x; i++)
+            {
+                var startPoint = grid.CellToWorld(new Vector3Int(i, minGridDimensions.y, 0));
+                var endPoint = grid.CellToWorld(new Vector3Int(i, maxGridDimensions.y, 0));
+
+                var line = Instantiate(gridLine, grid.transform);
+                line.SetPosition(0, startPoint);
+                line.SetPosition(1, endPoint);
+            }
+            for (int j = minGridDimensions.y; j <= maxGridDimensions.y; j++)
+            {
+                var startPoint = grid.CellToWorld(new Vector3Int(minGridDimensions.x, j, 0));
+                var endPoint = grid.CellToWorld(new Vector3Int(maxGridDimensions.y, j, 0));
+
+                var line = Instantiate(gridLine, grid.transform);
+                line.SetPosition(0, startPoint);
+                line.SetPosition(1, endPoint);
+            }
         }
 
         protected override void OnDestroy()
@@ -51,9 +80,13 @@ namespace Thirties.Miniclip.TowerDefense
             {
                 var lastScreenPoint = LeanGesture.GetLastScreenCenter();
                 var screenPoint = LeanGesture.GetScreenCenter();
-                var delta = screenPoint - lastScreenPoint;
 
-                Camera.main.transform.position += new Vector3(delta.x, 0, delta.y) * panSensitivity;
+                var lastWorldPoint = Camera.main.ScreenToWorldPoint(lastScreenPoint);
+                var worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
+
+                var delta = worldPoint - lastWorldPoint;
+
+                Camera.main.transform.position += delta * panSensitivity;
             }
         }
 

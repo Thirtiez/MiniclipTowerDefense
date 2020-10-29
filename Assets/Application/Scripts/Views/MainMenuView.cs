@@ -6,6 +6,12 @@ namespace Thirties.Miniclip.TowerDefense
 {
     public class MainMenuView : BaseView
     {
+        #region Events
+
+        public UnityAction PlayButtonPressed { get; set; }
+
+        #endregion
+
         #region Inspector fields
 
         [SerializeField]
@@ -13,22 +19,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         #endregion
 
-        #region Private fields
-
-        #endregion
-
-        #region Public fields
-
-
-        #endregion
-
-        #region Events
-
-        public UnityAction StartingGame { get; set; }
-
-        #endregion
-
-        #region Private methods
+        #region Protected methods
 
         protected override void Initialize()
         {
@@ -40,9 +31,13 @@ namespace Thirties.Miniclip.TowerDefense
             base.OnDestroy();
         }
 
+        #endregion
+
+        #region Private methods
+
         private void OnPlayButtonPressed()
         {
-            StartingGame?.Invoke();
+            PlayButtonPressed?.Invoke();
         }
 
         #endregion

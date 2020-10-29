@@ -2,24 +2,7 @@
 {
     public class ResultView : BaseView
     {
-        #region Inspector fields
-
-        #endregion
-
-        #region Private fields
-
-        #endregion
-
-        #region Public fields
-
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Private methods
+        #region Protected methods
 
         protected override void Initialize()
         {

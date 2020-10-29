@@ -17,6 +17,14 @@ MonoBehaviour:
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
     mTerms:
+    - Term: FightButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Fight
+      - Combatti
+      Flags: 0000
+      Languages_Touch: []
     - Term: MainMenuTitle
       TermType: 0
       Description: 
@@ -31,6 +39,14 @@ MonoBehaviour:
       Languages:
       - Play
       - Gioca
+      Flags: 0000
+      Languages_Touch: []
+    - Term: GiveUpButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Give Up
+      - Rinuncia
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

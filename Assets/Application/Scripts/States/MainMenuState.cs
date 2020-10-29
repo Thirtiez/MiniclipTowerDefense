@@ -17,7 +17,7 @@ namespace Thirties.Miniclip.TowerDefense
                 imageFader.FadeIn();
                 audioFader.FadeIn();
 
-                view.StartingGame += StartGame;
+                view.PlayButtonPressed += StartGame;
             }
         }
 
@@ -25,7 +25,7 @@ namespace Thirties.Miniclip.TowerDefense
         {
             if (view != null)
             {
-                view.StartingGame -= StartGame;
+                view.PlayButtonPressed -= StartGame;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);

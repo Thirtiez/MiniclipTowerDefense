@@ -1,1 +1,5 @@
-﻿Key,Type,Desc,Italian,English
+﻿Key,Type,Desc,English,Italian
+FightButton,Text,,Fight,Combatti
+GiveUp,Text,,Give Up,Rinuncia
+MainMenuTitle,Text,,Tower Defense,Tower Defense
+PlayButton,Text,,Play,Gioca

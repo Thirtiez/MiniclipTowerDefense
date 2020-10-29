@@ -1,17 +1,32 @@
-﻿using Lean.Touch;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Thirties.Miniclip.TowerDefense
 {
     public class GameView : BaseView
     {
+        #region Events
+
+        private UnityAction FightButtonPressed { get; set; }
+        private UnityAction GiveUpButtonPressed { get; set; }
+        private UnityAction<IDeployable> DeployableButtonPressed { get; set; }
+
+        #endregion
+
         #region Inspector fields
 
-        [Header("Camera")]
+        [Header("Deployables")]
         [SerializeField]
-        private float panSensitivity = 0.5f;
+        private Transform deployableContainer;
         [SerializeField]
-        private float zoomSensitivity = 0.2f;
+        private DeployableUIElement deployablePrefab;
+
+        [Header("Buttons")]
+        [SerializeField]
+        private Button fightButton;
+        [SerializeField]
+        private Button giveUpButton;
 
         [Header("Grid")]
         [SerializeField]
@@ -30,19 +45,11 @@ namespace Thirties.Miniclip.TowerDefense
 
         #endregion
 
-        #region Public fields
-
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Private methods
+        #region Protected methods
 
         protected override void Initialize()
         {
+            // Grid
             for (int i = minGridDimensions.x; i <= maxGridDimensions.x; i++)
             {
                 var startPoint = grid.CellToWorld(new Vector3Int(i, minGridDimensions.y, 0));
@@ -61,6 +68,10 @@ namespace Thirties.Miniclip.TowerDefense
                 line.SetPosition(0, startPoint);
                 line.SetPosition(1, endPoint);
             }
+
+            // Listeners
+            fightButton.onClick.AddListener(FightButtonPressed);
+            giveUpButton.onClick.AddListener(GiveUpButtonPressed);
         }
 
         protected override void OnDestroy()
@@ -68,39 +79,9 @@ namespace Thirties.Miniclip.TowerDefense
             base.OnDestroy();
         }
 
-        protected void Update()
-        {
-            HandleCameraPan();
-            HandleCameraZoom();
-        }
+        #endregion
 
-        protected void HandleCameraPan()
-        {
-            if (LeanTouch.Fingers.Count == 2)
-            {
-                var lastScreenPoint = LeanGesture.GetLastScreenCenter();
-                var screenPoint = LeanGesture.GetScreenCenter();
-
-                var lastWorldPoint = Camera.main.ScreenToWorldPoint(lastScreenPoint);
-                var worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
-
-                var delta = worldPoint - lastWorldPoint;
-
-                Camera.main.transform.position += delta * panSensitivity;
-            }
-        }
-
-        protected void HandleCameraZoom()
-        {
-            if (LeanTouch.Fingers.Count == 2)
-            {
-                float lastScreenDistance = LeanGesture.GetLastScreenDistance();
-                float screenDistance = LeanGesture.GetScreenDistance();
-                float delta = screenDistance - lastScreenDistance;
-
-                Camera.main.orthographicSize += delta * zoomSensitivity;
-            }
-        }
+        #region Private methods
 
         #endregion
     }

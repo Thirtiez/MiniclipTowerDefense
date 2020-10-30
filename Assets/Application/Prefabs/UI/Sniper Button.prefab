@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4856099602148102470}
   - component: {fileID: 6881120113721360893}
   m_Layer: 5
-  m_Name: Deployable Button
+  m_Name: Sniper Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9fef89485f2ba6479a4f23d5d0b5b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 4856099602148102468}
+  deployablePrefab: {fileID: 935634989597386214, guid: d2a30de04a91a0843ada127ff59ecd0e,
+    type: 3}
 --- !u!1 &4856099602614819244
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         private UnityAction FightButtonPressed { get; set; }
         private UnityAction GiveUpButtonPressed { get; set; }
-        private UnityAction<IDeployable> DeployableButtonPressed { get; set; }
+        private UnityAction<Deployable> DeployableButtonPressed { get; set; }
 
         #endregion
 
@@ -20,7 +20,7 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Transform deployableContainer;
         [SerializeField]
-        private DeployableUIElement deployablePrefab;
+        private DeployableUIElement deployableUIElementPrefab;
 
         [Header("Buttons")]
         [SerializeField]

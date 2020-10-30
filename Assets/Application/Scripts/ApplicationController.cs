@@ -19,7 +19,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         [Header("Data")]
         [SerializeField]
-        private Dictionaries dictionaries;
+        private DeployableData deployablesData;
 
         public static ApplicationController Instance { get; private set; }
 

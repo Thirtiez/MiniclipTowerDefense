@@ -2,8 +2,7 @@
 
 namespace Thirties.Miniclip.TowerDefense
 {
-    public interface IDeployable
+    public class Deployable : MonoBehaviour
     {
-        Vector2Int Size { get; set; }
     }
 }

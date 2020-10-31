@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
 {
-    public class GameState : BaseState
+    public class PlanningState : BaseState
     {
         private GameView view;
 
@@ -16,6 +17,11 @@ namespace Thirties.Miniclip.TowerDefense
             {
                 imageFader.FadeIn();
                 audioFader.FadeIn();
+
+                view.StartPlanning();
+
+                view.DeployableButtonPressed += GoToPositioning;
+                view.FightButtonPressed += GoForward;
             }
         }
 
@@ -23,10 +29,21 @@ namespace Thirties.Miniclip.TowerDefense
         {
             if (view != null)
             {
-
+                view.DeployableButtonPressed -= GoToPositioning;
+                view.FightButtonPressed -= GoForward;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);
+        }
+
+        private void GoToPositioning()
+        {
+            GoTo(FSMTrigger.Game.Positioning);
+        }
+
+        private void GoToFighting()
+        {
+            GoTo(FSMTrigger.Game.Fighting);
         }
     }
 }

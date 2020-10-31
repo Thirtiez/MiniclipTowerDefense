@@ -8,6 +8,6 @@ namespace Thirties.Miniclip.TowerDefense
     public class DeployableData : ScriptableObject
     {
         [ShowInInspector]
-        private List<DeployableUIElement> Deployables { get; set; }
+        public List<Deployable> Deployables { get; set; }
     }
 }

@@ -53,7 +53,10 @@ namespace Thirties.Miniclip.TowerDefense
                 StopCoroutine(fadeCoroutine);
             }
 
-            fadeCoroutine = StartCoroutine(FadeCoroutine(targetValue, fadeInValue, time ?? defaultFadeTime, onCompleted));
+            if (targetValue != fadeInValue)
+            {
+                fadeCoroutine = StartCoroutine(FadeCoroutine(targetValue, fadeInValue, time ?? defaultFadeTime, onCompleted));
+            }
         }
 
         public virtual void FadeOut(UnityAction onCompleted = null, float? time = null)
@@ -63,7 +66,10 @@ namespace Thirties.Miniclip.TowerDefense
                 StopCoroutine(fadeCoroutine);
             }
 
-            fadeCoroutine = StartCoroutine(FadeCoroutine(targetValue, fadeOutValue, time ?? defaultFadeTime, onCompleted));
+            if (targetValue != fadeOutValue)
+            {
+                fadeCoroutine = StartCoroutine(FadeCoroutine(targetValue, fadeOutValue, time ?? defaultFadeTime, onCompleted));
+            }
         }
 
         public virtual void Blink(UnityAction onCompleted = null, float? time = null)

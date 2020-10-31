@@ -19,11 +19,15 @@ namespace Thirties.Miniclip.TowerDefense
 
         [Header("Data")]
         [SerializeField]
-        private DeployableData deployablesData;
+        private DeployableData deployableData;
+        public DeployableData DeployableData { get { return deployableData; } }
+
 
         public static ApplicationController Instance { get; private set; }
 
         public BaseView CurrentView { get; set; }
+
+        public int CurrentMoney { get; set; }
 
         private void Start()
         {

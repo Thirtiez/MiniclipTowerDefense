@@ -68,7 +68,7 @@ MonoBehaviour:
   fsm: {fileID: 176362181743847149}
   imageFader: {fileID: 7035305372833129055}
   audioFader: {fileID: 7035305372390908303}
-  dictionaries: {fileID: 11400000, guid: 4ebe852e2cf864c4caf931bf92a52db7, type: 2}
+  deployableData: {fileID: 11400000, guid: 47e818c82e2c50344857a8036cb22b97, type: 2}
 --- !u!1 &7035305372390908289
 GameObject:
   m_ObjectHideFlags: 0

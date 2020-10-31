@@ -37,12 +37,12 @@ namespace Thirties.Miniclip.TowerDefense
 
         protected void GoForward()
         {
-            fsm.SetTrigger(FSMTrigger.Forward);
+            fsm.SetTrigger(FSMTrigger.Scene.Forward);
         }
 
         protected void GoBack()
         {
-            fsm.SetTrigger(FSMTrigger.Back);
+            fsm.SetTrigger(FSMTrigger.Scene.Back);
         }
 
         protected void GoTo(int trigger)

@@ -125,8 +125,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 
-      - 
+      - Defeat!
+      - Sconfitta!
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc74d92f3b0a79b468725d99daf9defe, type: 3}
   m_Name: DeployableData
   m_EditorClassIdentifier: 
+  deployables:
+  - {fileID: 8239323806611910064, guid: 9096fe935208e33458693bec69386f2b, type: 3}
+  - {fileID: 935634989597386214, guid: d2a30de04a91a0843ada127ff59ecd0e, type: 3}
+  - {fileID: 602144737798111535, guid: e28a86b19f670854cab097213c38a9ba, type: 3}
+  - {fileID: 8395749294579684856, guid: 1cbe98aee6821254f83f23fa6e60de30, type: 3}

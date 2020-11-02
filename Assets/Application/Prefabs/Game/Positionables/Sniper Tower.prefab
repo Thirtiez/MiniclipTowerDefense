@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 935634989597386212}
   - component: {fileID: 114680582449275440}
   - component: {fileID: 4336033254126454069}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sniper Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9a4ed69cca97044bcd985ebbf9bfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 20
 --- !u!114 &935634989597386212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,9 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePower: 5
-  fireRate: 1
+  firePower: 10
+  fireDelay: 3
   fireRange: 10
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &114680582449275440
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 602144737798111533}
   - component: {fileID: 114122158934484832}
   - component: {fileID: 3975406789371052330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mortar Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9a4ed69cca97044bcd985ebbf9bfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 60
 --- !u!114 &602144737798111533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,9 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePower: 5
-  fireRate: 1
-  fireRange: 10
+  firePower: 20
+  fireDelay: 6
+  fireRange: 3
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &114122158934484832
 MonoBehaviour:
   m_ObjectHideFlags: 0

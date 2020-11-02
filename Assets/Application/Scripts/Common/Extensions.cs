@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,11 +12,42 @@ namespace Thirties.Miniclip.TowerDefense
             return collection == null || collection.Any() == false;
         }
 
+        public static Vector3 GetSnappedPosition(this Grid grid, Vector3 position, Vector2Int? size = null)
+        {
+            var cellPosition = grid.WorldToCell(new Vector3(position.x, 0, position.z));
+
+            return GetSnappedPosition(grid, cellPosition, size);
+        }
+
+        public static Vector3 GetSnappedPosition(this Grid grid, Vector2Int position, Vector2Int? size = null)
+        {
+            return GetSnappedPosition(grid, position.ToVector3Int(), size);
+        }
+
+        public static Vector3 GetSnappedPosition(this Grid grid, Vector3Int position, Vector2Int? size = null)
+        {
+            var offset = size?.ToVector3Int() ?? new Vector3Int(1, 1, 0);
+            var lowerLeft = grid.CellToWorld(position);
+            var upperRight = grid.CellToWorld(position + offset);
+
+            return (upperRight + lowerLeft) / 2.0f;
+        }
+
         public static Vector3Int ToVector3Int(this Vector2Int vector, bool invertYZ = false)
             => invertYZ ? new Vector3Int(vector.x, 0, vector.y) : new Vector3Int(vector.x, vector.y, 0);
 
         public static Vector2Int ToVector2Int(this Vector3Int vector, bool invertYZ = false)
              => invertYZ ? new Vector2Int(vector.x, vector.z) : new Vector2Int(vector.x, vector.y);
+
+        public static bool HasComponent<T>(this GameObject gameObject)
+        {
+            return (gameObject.GetComponent<T>() as Component) != null;
+        }
+
+        public static bool HasComponent<T>(this Transform transform)
+        {
+            return (transform.GetComponent<T>() as Component) != null;
+        }
     }
 }
 

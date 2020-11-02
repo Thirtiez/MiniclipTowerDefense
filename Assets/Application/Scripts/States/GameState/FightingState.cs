@@ -16,6 +16,8 @@ namespace Thirties.Miniclip.TowerDefense
             if (view != null)
             {
                 view.StartFighting();
+
+                view.GiveUpButtonPressed += GiveUp;
             }
         }
 
@@ -23,9 +25,15 @@ namespace Thirties.Miniclip.TowerDefense
         {
             if (view != null)
             {
+                view.GiveUpButtonPressed -= GiveUp;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);
+        }
+
+        private void GiveUp()
+        {
+            applicationController.ConfirmationModal.Show("WARNING", "Do you really want to give up?", () => GoTo(FSMTrigger.Scene.MainMenu));
         }
     }
 }

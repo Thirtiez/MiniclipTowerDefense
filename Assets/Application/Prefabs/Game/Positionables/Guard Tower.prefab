@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8239323806611910066}
   - component: {fileID: 114507993532034534}
   - component: {fileID: 7480565505662901827}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Guard Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9a4ed69cca97044bcd985ebbf9bfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 40
 --- !u!114 &8239323806611910066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,8 +153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePower: 5
-  fireRate: 1
-  fireRange: 10
+  fireDelay: 1
+  fireRange: 3
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &114507993532034534
 MonoBehaviour:
   m_ObjectHideFlags: 0

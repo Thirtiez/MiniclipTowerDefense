@@ -17,10 +17,18 @@ namespace Thirties.Miniclip.TowerDefense
         private AudioFader audioFader;
         public AudioFader AudioFader { get { return audioFader; } }
 
+        [Header("UI")]
+        [SerializeField]
+        private ConfirmationModal confirmationModal;
+        public ConfirmationModal ConfirmationModal { get { return confirmationModal; } }
+
         [Header("Data")]
         [SerializeField]
         private DeployableData deployableData;
         public DeployableData DeployableData { get { return deployableData; } }
+        [SerializeField]
+        private EnemyData enemyData;
+        public EnemyData EnemyData { get { return enemyData; } }
 
 
         public static ApplicationController Instance { get; private set; }

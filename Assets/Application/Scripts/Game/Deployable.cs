@@ -16,9 +16,7 @@ namespace Thirties.Miniclip.TowerDefense
         private int cost = 10;
         public int Cost { get { return cost; } }
 
-        private Coroutine positioningRoutine;
-
-        protected void Awake()
+        protected void OnEnable()
         {
             var collider = GetComponent<BoxCollider>();
             var positionable = GetComponent<Positionable>();

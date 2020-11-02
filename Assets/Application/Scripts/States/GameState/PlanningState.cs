@@ -21,7 +21,7 @@ namespace Thirties.Miniclip.TowerDefense
                 view.StartPlanning();
 
                 view.DeployableButtonPressed += GoToPositioning;
-                view.FightButtonPressed += GoForward;
+                view.FightButtonPressed += GoToFighting;
             }
         }
 
@@ -30,7 +30,7 @@ namespace Thirties.Miniclip.TowerDefense
             if (view != null)
             {
                 view.DeployableButtonPressed -= GoToPositioning;
-                view.FightButtonPressed -= GoForward;
+                view.FightButtonPressed -= GoToFighting;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);

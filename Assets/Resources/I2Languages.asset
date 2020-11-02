@@ -49,6 +49,86 @@ MonoBehaviour:
       - Rinuncia
       Flags: 0000
       Languages_Touch: []
+    - Term: GiveUpModalTitle
+      TermType: 0
+      Description: 
+      Languages:
+      - Give Up
+      - Rinuncia
+      Flags: 0000
+      Languages_Touch: []
+    - Term: GiveUpModalDescription
+      TermType: 0
+      Description: 
+      Languages:
+      - Are you sure you want to give up?
+      - Sei sicuro di voler rinunciare?
+      Flags: 0000
+      Languages_Touch: []
+    - Term: CancelButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancel
+      - Annulla
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ConfirmButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm
+      - Conferma
+      Flags: 0000
+      Languages_Touch: []
+    - Term: DoubleTimeButtonText
+      TermType: 0
+      Description: 
+      Languages:
+      - 2x
+      - 2x
+      Flags: 0000
+      Languages_Touch: []
+    - Term: NormalTimeButton
+      TermType: 0
+      Description: 
+      Languages:
+      - 1x
+      - 1x
+      Flags: 0000
+      Languages_Touch: []
+    - Term: RetryButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Retry
+      - Riprova
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ExitButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Exit
+      - Esci
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ResolutionModalTitle_Victory
+      TermType: 0
+      Description: 
+      Languages:
+      - Victory!
+      - Vittoria!
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ResolutionModalTitle_Defeat
+      TermType: 0
+      Description: 
+      Languages:
+      - 
+      - 
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

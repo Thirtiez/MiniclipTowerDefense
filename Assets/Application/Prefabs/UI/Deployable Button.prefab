@@ -223,7 +223,6 @@ MonoBehaviour:
   button: {fileID: 5657901342330574263}
   normalIcon: {fileID: 5657901343299327351}
   highlightedIcon: {fileID: 5657901343133729723}
-  deployable: {fileID: 0}
 --- !u!1 &5657901342801288543
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,10 @@ namespace Thirties.Miniclip.TowerDefense
 
             if (view != null)
             {
+                view.StartResolution();
+
+                view.ExitButtonPressed += GoToMainMenu;
+                view.RestartButtonPressed += GoToGame;
             }
         }
 
@@ -22,9 +26,23 @@ namespace Thirties.Miniclip.TowerDefense
         {
             if (view != null)
             {
+                view.ExitButtonPressed -= GoToMainMenu;
+                view.RestartButtonPressed -= GoToGame;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);
+        }
+
+        private void GoToMainMenu()
+        {
+            imageFader.FadeOut(() => GoTo(FSMTrigger.Scene.MainMenu));
+            audioFader.FadeOut();
+        }
+
+        private void GoToGame()
+        {
+            imageFader.FadeOut(() => GoTo(FSMTrigger.Scene.Game));
+            audioFader.FadeOut();
         }
     }
 }

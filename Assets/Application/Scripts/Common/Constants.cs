@@ -12,7 +12,6 @@ namespace Thirties.Miniclip.TowerDefense
             public static readonly int Splash = Animator.StringToHash("Splash");
             public static readonly int MainMenu = Animator.StringToHash("MainMenu");
             public static readonly int Game = Animator.StringToHash("Game");
-            public static readonly int Result = Animator.StringToHash("Result");
         }
 
         public static class Game
@@ -24,7 +23,15 @@ namespace Thirties.Miniclip.TowerDefense
         }
     }
 
-    public static class Layers
+    public static class LocalizationKey
+    {
+        public static readonly string GiveUpModalTitle = "GiveUpModalTitle";
+        public static readonly string GiveUpModalDescription = "GiveUpModalDescription";
+        public static readonly string ResolutionModalTitle_Defeat = "ResolutionModalTitle_Defeat";
+        public static readonly string ResolutionModalTitle_Victory = "ResolutionModalTitle_Victory";
+    }
+
+    public static class Layer
     {
         public static readonly int Floor = LayerMask.NameToLayer("Floor");
         public static readonly int Enemy = LayerMask.NameToLayer("Enemy");

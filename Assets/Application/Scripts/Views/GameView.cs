@@ -1,4 +1,5 @@
-﻿using Lean.Touch;
+﻿using I2.Loc;
+using Lean.Touch;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -14,9 +15,15 @@ namespace Thirties.Miniclip.TowerDefense
 
         public UnityAction FightButtonPressed { get; set; }
         public UnityAction GiveUpButtonPressed { get; set; }
+        public UnityAction DoubleTimeButtonPressed { get; set; }
+        public UnityAction NormalTimeButtonPressed { get; set; }
         public UnityAction DeployableButtonPressed { get; set; }
         public UnityAction<Deployable> PositioningConfirmButtonPressed { get; set; }
         public UnityAction PositioningCancelButtonPressed { get; set; }
+        public UnityAction HeadquartersDestroyed { get; set; }
+        public UnityAction AllEnemiesDefeated { get; set; }
+        public UnityAction RestartButtonPressed { get; set; }
+        public UnityAction ExitButtonPressed { get; set; }
 
         #endregion
 
@@ -25,6 +32,8 @@ namespace Thirties.Miniclip.TowerDefense
         [Header("UI")]
         [SerializeField]
         private Canvas canvas;
+        [SerializeField]
+        private ResolutionModal resolutionModal;
         [SerializeField]
         private TMP_Text moneyText;
         [SerializeField]
@@ -39,6 +48,10 @@ namespace Thirties.Miniclip.TowerDefense
         private Button fightButton;
         [SerializeField]
         private Button giveUpButton;
+        [SerializeField]
+        private Button doubleTimeButton;
+        [SerializeField]
+        private Button normalTimeButton;
 
         [Header("Grid")]
         [SerializeField]
@@ -54,6 +67,10 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private LineRenderer gridLinePrefab;
 
+        [Header("Parameters")]
+        [SerializeField]
+        private int enemiesToSpawn = 20;
+
         #endregion
 
         #region Private fields
@@ -68,6 +85,8 @@ namespace Thirties.Miniclip.TowerDefense
         private List<AIControlled> enemies = new List<AIControlled>();
 
         private Deployable currentDeployable;
+        private bool isVictory = false;
+        private int defeatedEnemies = 0;
 
         #endregion
 
@@ -81,6 +100,10 @@ namespace Thirties.Miniclip.TowerDefense
             deployableContainer.gameObject.SetActive(true);
             fightButton.gameObject.SetActive(true);
             giveUpButton.gameObject.SetActive(false);
+            doubleTimeButton.gameObject.SetActive(true);
+            normalTimeButton.gameObject.SetActive(false);
+
+            doubleTimeButton.interactable = false;
 
             moneyText.text = applicationController.CurrentMoney.ToString();
         }
@@ -93,6 +116,10 @@ namespace Thirties.Miniclip.TowerDefense
             deployableContainer.gameObject.SetActive(true);
             fightButton.gameObject.SetActive(false);
             giveUpButton.gameObject.SetActive(false);
+            doubleTimeButton.gameObject.SetActive(true);
+            normalTimeButton.gameObject.SetActive(false);
+
+            doubleTimeButton.interactable = false;
 
             // Instantiate the deployable
             var positionable = currentDeployable.GetComponent<Positionable>();
@@ -133,10 +160,14 @@ namespace Thirties.Miniclip.TowerDefense
             deployableContainer.gameObject.SetActive(false);
             fightButton.gameObject.SetActive(false);
             giveUpButton.gameObject.SetActive(true);
+            doubleTimeButton.gameObject.SetActive(true);
+            normalTimeButton.gameObject.SetActive(false);
+
+            doubleTimeButton.interactable = true;
 
             // Spawn enemies
             var enemy = applicationController.EnemyData.Enemies.FirstOrDefault();
-            SpawnEnemy(enemy, 10);
+            SpawnEnemy(enemy, enemiesToSpawn);
         }
 
         public void StartResolution()
@@ -144,7 +175,11 @@ namespace Thirties.Miniclip.TowerDefense
             // Refresh UI
             deployableContainer.gameObject.SetActive(false);
             fightButton.gameObject.SetActive(false);
-            giveUpButton.gameObject.SetActive(false);
+            giveUpButton.gameObject.SetActive(true);
+
+            resolutionModal.Show(LocalizationManager.GetTranslation(isVictory ? LocalizationKey.ResolutionModalTitle_Victory : LocalizationKey.ResolutionModalTitle_Defeat),
+                () => ExitButtonPressed?.Invoke(),
+                () => RestartButtonPressed?.Invoke());
         }
 
         #endregion
@@ -201,11 +236,15 @@ namespace Thirties.Miniclip.TowerDefense
 
             // Headquarters
             var position = grid.GetSnappedPosition(Vector3Int.zero, headquartersPrefab.Size);
-            Instantiate(headquartersPrefab, position, Quaternion.identity, positionableContainer);
+            var headquarters = Instantiate(headquartersPrefab, position, Quaternion.identity, positionableContainer);
+            var damageable = headquarters.GetComponent<Damageable>();
+            damageable.Died += () => HeadquartersDestroyed?.Invoke();
 
-            // Listeners
-            fightButton.onClick.AddListener(() => FightButtonPressed?.Invoke());
-            giveUpButton.onClick.AddListener(() => GiveUpButtonPressed?.Invoke());
+            // Buttons
+            fightButton.onClick.AddListener(OnFightButtonPressed);
+            giveUpButton.onClick.AddListener(OnGiveUpButtonPressed);
+            doubleTimeButton.onClick.AddListener(OnDoubleTimeButtonPressed);
+            normalTimeButton.onClick.AddListener(OnNormalTimeButtonPressed);
         }
 
         #endregion
@@ -222,6 +261,18 @@ namespace Thirties.Miniclip.TowerDefense
                 var enemy = Instantiate(enemyPrefab, position, Quaternion.identity, positionableContainer);
                 enemy.gameObject.name = $"Enemy{i}";
                 enemies.Add(enemy);
+
+                var damageable = enemy.GetComponent<Damageable>();
+                damageable.Died += () =>
+                {
+                    defeatedEnemies++;
+                    if (defeatedEnemies >= enemiesToSpawn)
+                    {
+                        isVictory = true;
+
+                        AllEnemiesDefeated?.Invoke();
+                    }
+                };
             }
         }
 
@@ -231,7 +282,7 @@ namespace Thirties.Miniclip.TowerDefense
             {
                 var ray = finger.GetRay(Camera.main);
 
-                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Layers.Floor))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Layer.Floor))
                 {
                     var positionable = currentDeployable.GetComponent<Positionable>();
                     var snappedPosition = grid.GetSnappedPosition(hit.point, positionable.Size);
@@ -246,6 +297,32 @@ namespace Thirties.Miniclip.TowerDefense
             currentDeployable = deployable;
 
             DeployableButtonPressed?.Invoke();
+        }
+
+        private void OnFightButtonPressed()
+        {
+            FightButtonPressed?.Invoke();
+        }
+
+        private void OnGiveUpButtonPressed()
+        {
+            GiveUpButtonPressed?.Invoke();
+        }
+
+        private void OnDoubleTimeButtonPressed()
+        {
+            DoubleTimeButtonPressed?.Invoke();
+
+            doubleTimeButton.gameObject.SetActive(false);
+            normalTimeButton.gameObject.SetActive(true);
+        }
+
+        private void OnNormalTimeButtonPressed()
+        {
+            NormalTimeButtonPressed?.Invoke();
+
+            doubleTimeButton.gameObject.SetActive(true);
+            normalTimeButton.gameObject.SetActive(false);
         }
 
         #endregion

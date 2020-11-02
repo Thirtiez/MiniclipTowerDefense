@@ -1,4 +1,4 @@
-﻿using System;
+﻿using I2.Loc;
 using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
@@ -18,6 +18,10 @@ namespace Thirties.Miniclip.TowerDefense
                 view.StartFighting();
 
                 view.GiveUpButtonPressed += GiveUp;
+                view.DoubleTimeButtonPressed += DoubleTime;
+                view.NormalTimeButtonPressed += NormalTime;
+                view.HeadquartersDestroyed += GoToResolution;
+                view.AllEnemiesDefeated += GoToResolution;
             }
         }
 
@@ -26,6 +30,10 @@ namespace Thirties.Miniclip.TowerDefense
             if (view != null)
             {
                 view.GiveUpButtonPressed -= GiveUp;
+                view.DoubleTimeButtonPressed -= DoubleTime;
+                view.NormalTimeButtonPressed -= NormalTime;
+                view.HeadquartersDestroyed -= GoToResolution;
+                view.AllEnemiesDefeated -= GoToResolution;
             }
 
             base.OnStateExit(animator, stateInfo, layerIndex);
@@ -33,7 +41,39 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void GiveUp()
         {
-            applicationController.ConfirmationModal.Show("WARNING", "Do you really want to give up?", () => GoTo(FSMTrigger.Scene.MainMenu));
+            StopTime();
+            applicationController.ConfirmationModal.Show(
+                LocalizationManager.GetTranslation("GiveUpModalTitle").ToUpper(),
+                LocalizationManager.GetTranslation("GiveUpModalDescription"),
+                () => 
+                {
+                    NormalTime();
+                    GoTo(FSMTrigger.Scene.MainMenu);
+                },
+                () => 
+                {
+                    NormalTime();
+                });
+        }
+
+        private void DoubleTime()
+        {
+            Time.timeScale = 2;
+        }
+
+        private void NormalTime()
+        {
+            Time.timeScale = 1;
+        }
+
+        private void StopTime()
+        {
+            Time.timeScale = 0;
+        }
+
+        private void GoToResolution()
+        {
+            GoTo(FSMTrigger.Game.Resolution);
         }
     }
 }

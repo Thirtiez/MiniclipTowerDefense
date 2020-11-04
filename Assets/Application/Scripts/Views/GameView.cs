@@ -132,7 +132,7 @@ namespace Thirties.Miniclip.TowerDefense
             {
                 Debug.Log($"{currentDeployable.gameObject.name} succesfully deployed.");
 
-                LeanTouch.OnFingerUpdate -= HandlePositioning;
+                LeanTouch.OnFingerUpdate -= OnFingerUpdate;
 
                 Destroy(positioningButtons.gameObject);
 
@@ -143,7 +143,7 @@ namespace Thirties.Miniclip.TowerDefense
             {
                 Debug.Log($"{currentDeployable.gameObject.name} deployment canceled.");
 
-                LeanTouch.OnFingerUpdate -= HandlePositioning;
+                LeanTouch.OnFingerUpdate -= OnFingerUpdate;
 
                 Destroy(positioningButtons.gameObject);
                 Destroy(currentDeployable.gameObject);
@@ -151,7 +151,8 @@ namespace Thirties.Miniclip.TowerDefense
                 PositioningCancelButtonPressed?.Invoke();
             });
 
-            LeanTouch.OnFingerUpdate += HandlePositioning;
+            // Input
+            LeanTouch.OnFingerUpdate += OnFingerUpdate;
         }
 
         public void StartFighting()
@@ -168,6 +169,9 @@ namespace Thirties.Miniclip.TowerDefense
             // Spawn enemies
             var enemy = applicationController.EnemyData.Enemies.FirstOrDefault();
             SpawnEnemy(enemy, enemiesToSpawn);
+
+            // Input
+            LeanTouch.OnFingerTap += OnFingerTap;
         }
 
         public void StartResolution()
@@ -276,7 +280,21 @@ namespace Thirties.Miniclip.TowerDefense
             }
         }
 
-        private void HandlePositioning(LeanFinger finger)
+        private void UpdatePositioning(Vector3 position)
+        {
+            var positionable = currentDeployable.GetComponent<Positionable>();
+            var snappedPosition = grid.GetSnappedPosition(position, positionable.Size);
+
+            currentDeployable.transform.position = snappedPosition;
+        }
+
+        private void ExplodeMine(Transform transform)
+        {
+            var explosive = transform.GetComponent<Explosive>();
+            explosive.Explode();
+        }
+
+        private void OnFingerUpdate(LeanFinger finger)
         {
             if (!finger.IsOverGui)
             {
@@ -284,10 +302,20 @@ namespace Thirties.Miniclip.TowerDefense
 
                 if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Layer.Floor))
                 {
-                    var positionable = currentDeployable.GetComponent<Positionable>();
-                    var snappedPosition = grid.GetSnappedPosition(hit.point, positionable.Size);
+                    UpdatePositioning(hit.point);
+                }
+            }
+        }
 
-                    currentDeployable.transform.position = snappedPosition;
+        private void OnFingerTap(LeanFinger finger)
+        {
+            if (!finger.IsOverGui)
+            {
+                var ray = finger.GetRay(Camera.main);
+
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Layer.Mine))
+                {
+                    ExplodeMine(hit.transform);
                 }
             }
         }

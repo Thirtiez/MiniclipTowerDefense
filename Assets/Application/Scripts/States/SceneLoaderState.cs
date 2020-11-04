@@ -13,11 +13,9 @@ namespace Thirties.Miniclip.TowerDefense
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
-            if (SceneManager.GetActiveScene().name != sceneToLoad.SceneName)
-            {
-                applicationController.CurrentView = null;
-                LoadScene();
-            }
+            applicationController.CurrentView = null;
+            LoadScene();
+
             GoForward();
         }
 

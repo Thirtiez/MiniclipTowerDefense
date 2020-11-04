@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 863062498360871755}
   - component: {fileID: 114707837254503350}
   - component: {fileID: 133252356669548720}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b04a7a4a95956f4fa4cccd5dc6cc171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPower: 5
+  explosionPower: 50
   explosionRadius: 5
 --- !u!114 &114707837254503350
 MonoBehaviour:

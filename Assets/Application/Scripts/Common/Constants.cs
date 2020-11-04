@@ -33,8 +33,9 @@ namespace Thirties.Miniclip.TowerDefense
 
     public static class Layer
     {
-        public static readonly int Floor = LayerMask.NameToLayer("Floor");
-        public static readonly int Enemy = LayerMask.NameToLayer("Enemy");
-        public static readonly int Tower = LayerMask.NameToLayer("Tower");
+        public static readonly LayerMask Floor = LayerMask.GetMask("Floor");
+        public static readonly LayerMask Enemy = LayerMask.GetMask("Enemy");
+        public static readonly LayerMask Tower = LayerMask.GetMask("Tower");
+        public static readonly LayerMask Mine = LayerMask.GetMask("Mine");
     }
 }

@@ -26,19 +26,15 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Button retryButton;
 
-        [Header("Colors")]
-        [SerializeField]
-        private Color victoryColor;
-        [SerializeField]
-        private Color defeatColor;
-
         private static readonly string FadeIn = "FadeIn";
         private static readonly string FadeOut = "FadeOut";
 
         public void Show(bool isVictory, UnityAction onExit = null, UnityAction onRetry = null)
         {
+            var color = isVictory ? ApplicationController.Instance.Settings.PrimaryColor : ApplicationController.Instance.Settings.SecondaryColor;
+            background.color = new Color(color.r, color.g, color.b, 0.4f);
+
             titleText.text = LocalizationManager.GetTranslation(isVictory ? LocalizationKey.ResolutionModalTitle_Victory : LocalizationKey.ResolutionModalTitle_Defeat);
-            background.color = isVictory ? victoryColor : defeatColor;
 
             exitButton.onClick.AddListener(() => onExit?.Invoke());
             exitButton.onClick.AddListener(Hide);

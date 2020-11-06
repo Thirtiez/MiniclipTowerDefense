@@ -5,10 +5,16 @@ namespace Thirties.Miniclip.TowerDefense
 {
     public class Explosive : MonoBehaviour
     {
+        [Header("Parameters")]
         [SerializeField]
         private float explosionPower = 50.0f;
         [SerializeField]
         private float explosionRadius = 5.0f;
+        public float ExplosionRadius { get { return explosionRadius; } }
+
+        [Header("Particles")]
+        [SerializeField]
+        private ParticleSystem explosionParticlesPrefab;
 
         public void Explode()
         {
@@ -25,6 +31,10 @@ namespace Thirties.Miniclip.TowerDefense
                     damageable.Damage(explosionPower);
                 });
             }
+
+            Instantiate(explosionParticlesPrefab, transform.position, transform.rotation);
+
+            Destroy(gameObject);
         }
     }
 }

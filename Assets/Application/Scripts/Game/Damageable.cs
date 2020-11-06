@@ -10,8 +10,13 @@ namespace Thirties.Miniclip.TowerDefense
 
         public bool IsAlive { get { return health > 0; } }
 
+        [Header("Parameters")]
         [SerializeField]
         private float health = 200.0f;
+
+        [Header("Particles")]
+        [SerializeField]
+        private ParticleSystem deathParticlesPrefab;
 
         public void Damage(float amount)
         {
@@ -19,6 +24,8 @@ namespace Thirties.Miniclip.TowerDefense
             if (health <= 0)
             {
                 Died?.Invoke();
+
+                Instantiate(deathParticlesPrefab, transform.position, transform.rotation);
 
                 Destroy(gameObject);
             }

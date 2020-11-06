@@ -1,5 +1,4 @@
-﻿using I2.Loc;
-using Lean.Touch;
+﻿using Lean.Touch;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -38,10 +37,6 @@ namespace Thirties.Miniclip.TowerDefense
         private TMP_Text moneyText;
         [SerializeField]
         private Transform deployableContainer;
-        [SerializeField]
-        private DeployableButton deployableButtonPrefab;
-        [SerializeField]
-        private PositioningButtons positioningButtonsPrefab;
 
         [Header("Buttons")]
         [SerializeField]
@@ -57,31 +52,20 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Grid grid;
         [SerializeField]
-        private Vector2Int gridDimensions = new Vector2Int(10, 10);
-        [SerializeField]
         private Transform positionableContainer;
-        [SerializeField]
-        private Positionable headquartersPrefab;
         [SerializeField]
         private Transform gridLineContainer;
         [SerializeField]
-        private LineRenderer gridLinePrefab;
-
-        [Header("Parameters")]
-        [SerializeField]
-        private int enemiesToSpawn = 20;
+        private Transform internalFloor;
 
         #endregion
 
         #region Private fields
 
-        private Vector2Int minGridDimensions => new Vector2Int(-gridDimensions.x / 2, -gridDimensions.y / 2);
-        private Vector2Int maxGridDimensions => new Vector2Int(gridDimensions.x / 2, gridDimensions.y / 2);
-
         private List<LineRenderer> gridLines = new List<LineRenderer>();
         private List<Vector2Int> spawnCells = new List<Vector2Int>();
         private List<DeployableButton> deployableButtons = new List<DeployableButton>();
-        private List<Deployable> deployables = new List<Deployable>();
+        private List<Positionable> positionedTowers = new List<Positionable>();
         private List<AIControlled> enemies = new List<AIControlled>();
 
         private Deployable currentDeployable;
@@ -125,9 +109,10 @@ namespace Thirties.Miniclip.TowerDefense
             var positionable = currentDeployable.GetComponent<Positionable>();
             var position = grid.GetSnappedPosition(Vector3Int.zero, positionable.Size);
             currentDeployable = Instantiate(currentDeployable, position, Quaternion.identity, positionableContainer);
+            currentDeployable.SetPositioning();
 
             // Instantiate the confirm/cancel positioning buttons
-            var positioningButtons = Instantiate(positioningButtonsPrefab, canvas.transform);
+            var positioningButtons = Instantiate(applicationController.Prefabs.PositioningButtons, canvas.transform);
             positioningButtons.Initialize(currentDeployable.transform, () =>
             {
                 Debug.Log($"{currentDeployable.gameObject.name} succesfully deployed.");
@@ -136,7 +121,9 @@ namespace Thirties.Miniclip.TowerDefense
 
                 Destroy(positioningButtons.gameObject);
 
-                deployables.Add(currentDeployable);
+                currentDeployable.SetReady();
+
+                positionedTowers.Add(currentDeployable.GetComponent<Positionable>());
 
                 PositioningConfirmButtonPressed?.Invoke(currentDeployable);
             }, () =>
@@ -166,9 +153,12 @@ namespace Thirties.Miniclip.TowerDefense
 
             doubleTimeButton.interactable = true;
 
+            // Grid
+            gridLines.ForEach(x => Destroy(x.gameObject));
+
             // Spawn enemies
-            var enemy = applicationController.EnemyData.Enemies.FirstOrDefault();
-            SpawnEnemy(enemy, enemiesToSpawn);
+            var enemy = applicationController.Prefabs.Enemies.FirstOrDefault();
+            SpawnEnemy(enemy, applicationController.Settings.EnemiesToSpawn);
 
             // Input
             LeanTouch.OnFingerTap += OnFingerTap;
@@ -194,22 +184,25 @@ namespace Thirties.Miniclip.TowerDefense
         protected override void Initialize()
         {
             // UI
-            deployableButtons = applicationController.DeployableData.Deployables.Select(deployable =>
+            deployableButtons = applicationController.Prefabs.Towers.Select(deployable =>
             {
-                var deployableButton = Instantiate(deployableButtonPrefab, deployableContainer);
+                var deployableButton = Instantiate(applicationController.Prefabs.DeployableButton, deployableContainer);
                 deployableButton.Initialize(deployable, OnDeployableButtonPressed);
 
                 return deployableButton;
             }).ToList();
 
-            // Grid lines and spawn points
+            // Grid
+            var minGridDimensions = applicationController.Settings.MinGridDimensions;
+            var maxGridDimensions = applicationController.Settings.MaxGridDimensions;
+
             gridLines = new List<LineRenderer>();
             for (int i = minGridDimensions.x; i <= maxGridDimensions.x; i++)
             {
                 var startPoint = grid.CellToWorld(new Vector3Int(i, minGridDimensions.y, 0));
                 var endPoint = grid.CellToWorld(new Vector3Int(i, maxGridDimensions.y, 0));
 
-                var line = Instantiate(gridLinePrefab, gridLineContainer);
+                var line = Instantiate(applicationController.Prefabs.GridLine, gridLineContainer);
                 line.SetPosition(0, startPoint);
                 line.SetPosition(1, endPoint);
 
@@ -226,7 +219,7 @@ namespace Thirties.Miniclip.TowerDefense
                 var startPoint = grid.CellToWorld(new Vector3Int(minGridDimensions.x, j, 0));
                 var endPoint = grid.CellToWorld(new Vector3Int(maxGridDimensions.y, j, 0));
 
-                var line = Instantiate(gridLinePrefab, gridLineContainer);
+                var line = Instantiate(applicationController.Prefabs.GridLine, gridLineContainer);
                 line.SetPosition(0, startPoint);
                 line.SetPosition(1, endPoint);
 
@@ -239,11 +232,16 @@ namespace Thirties.Miniclip.TowerDefense
                 }
             }
 
+            // Floor
+            var gridDimensions = applicationController.Settings.GridDimensions;
+            internalFloor.localScale = new Vector3(gridDimensions.x / 10f, 1, gridDimensions.y / 10f);
+
             // Headquarters
-            var position = grid.GetSnappedPosition(Vector3Int.zero, headquartersPrefab.Size);
-            var headquarters = Instantiate(headquartersPrefab, position, Quaternion.identity, positionableContainer);
+            var position = grid.GetSnappedPosition(Vector3Int.zero, applicationController.Prefabs.Headquarters.Size);
+            var headquarters = Instantiate(applicationController.Prefabs.Headquarters, position, Quaternion.identity, positionableContainer);
             var damageable = headquarters.GetComponent<Damageable>();
             damageable.Died += () => HeadquartersDestroyed?.Invoke();
+            positionedTowers.Add(headquarters);
 
             // Buttons
             fightButton.onClick.AddListener(OnFightButtonPressed);
@@ -271,7 +269,7 @@ namespace Thirties.Miniclip.TowerDefense
                 damageable.Died += () =>
                 {
                     defeatedEnemies++;
-                    if (defeatedEnemies >= enemiesToSpawn)
+                    if (defeatedEnemies >= applicationController.Settings.EnemiesToSpawn)
                     {
                         isVictory = true;
 
@@ -283,10 +281,21 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void UpdatePositioning(Vector3 position)
         {
+            // TODO fix
             var positionable = currentDeployable.GetComponent<Positionable>();
-            var snappedPosition = grid.GetSnappedPosition(position, positionable.Size);
+            var bottomLeft = grid.WorldToCell(position).ToVector2Int();
+            var topRight = bottomLeft + positionable.Size;
+            var positionableBounds = new Bounds(bottomLeft.ToVector3(), topRight.ToVector3());
+            var gridBounds = applicationController.Settings.GridBounds;
 
-            currentDeployable.transform.position = snappedPosition;
+            if (gridBounds.Intersects(positionableBounds)
+                && !positionedTowers.Any(x => x.Bounds.Intersects(positionableBounds)))
+            {
+                var snappedPosition = grid.GetSnappedPosition(position, positionable.Size);
+                positionable.Position = bottomLeft;
+
+                currentDeployable.transform.position = snappedPosition;
+            }
         }
 
         private void ExplodeMine(Transform transform)
@@ -297,7 +306,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void OnFingerUpdate(LeanFinger finger)
         {
-            if (!finger.IsOverGui)
+            if (!finger.IsOverGui && LeanTouch.Fingers.Count == 1)
             {
                 var ray = finger.GetRay(Camera.main);
 
@@ -310,7 +319,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void OnFingerTap(LeanFinger finger)
         {
-            if (!finger.IsOverGui)
+            if (!finger.IsOverGui && LeanTouch.Fingers.Count == 1)
             {
                 var ray = finger.GetRay(Camera.main);
 

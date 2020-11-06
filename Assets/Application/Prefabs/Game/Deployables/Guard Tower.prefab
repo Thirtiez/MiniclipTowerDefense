@@ -42408,7 +42408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6612268008908730562
 Transform:
   m_ObjectHideFlags: 0
@@ -42581,7 +42581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8239323806611909964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.5}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6612268008908730562}
@@ -42603,6 +42603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e5a8ddb71725f4711a397ec9f4e31623, type: 3}
   cost: 15
+  ghostObject: {fileID: 6614236014459240414}
+  normalObject: {fileID: 2761442544625338073}
 --- !u!114 &8239323806611910065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42616,6 +42618,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 40
+  deathParticlesPrefab: {fileID: 2148284385566665987, guid: fec7c121f9cfbb94499b5abdb087ff05,
+    type: 3}
 --- !u!114 &8239323806611910066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42628,12 +42632,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePower: 5
-  fireDelay: 1
-  fireRange: 3
+  firePower: 2
+  fireDelay: 0.3
+  fireRange: 4
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024
+  rotatablePart: {fileID: 2758231349777967575}
+  firingPoint: {fileID: 2763434659868270905}
+  fireParticles: {fileID: 2636005687836252509}
 --- !u!114 &114507993532034534
 MonoBehaviour:
   m_ObjectHideFlags: 0

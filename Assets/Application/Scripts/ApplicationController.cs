@@ -23,12 +23,11 @@ namespace Thirties.Miniclip.TowerDefense
 
         [Header("Data")]
         [SerializeField]
-        private DeployableData deployableData;
-        public DeployableData DeployableData { get { return deployableData; } }
+        private Settings settings;
+        public Settings Settings { get { return settings; } }
         [SerializeField]
-        private EnemyData enemyData;
-        public EnemyData EnemyData { get { return enemyData; } }
-
+        private Prefabs prefabs;
+        public Prefabs Prefabs { get { return prefabs; } }
 
         public static ApplicationController Instance { get; private set; }
 

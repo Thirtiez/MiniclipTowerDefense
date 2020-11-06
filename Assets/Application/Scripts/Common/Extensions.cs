@@ -36,8 +36,26 @@ namespace Thirties.Miniclip.TowerDefense
         public static Vector3Int ToVector3Int(this Vector2Int vector, bool invertYZ = false)
             => invertYZ ? new Vector3Int(vector.x, 0, vector.y) : new Vector3Int(vector.x, vector.y, 0);
 
+        public static Vector3Int ToVector3Int(this Vector3 vector, bool invertYZ = false)
+            => invertYZ ? new Vector3Int((int)vector.x, (int)vector.z, (int)vector.y) : new Vector3Int((int)vector.x, (int)vector.y, (int)vector.z);
+
+        public static Vector3 ToVector3(this Vector3Int vector, bool invertYZ = false)
+            => invertYZ ? new Vector3(vector.x, 0, vector.y) : new Vector3(vector.x, vector.y, 0);
+
+        public static Vector3 ToVector3(this Vector2Int vector, bool invertYZ = false)
+            => invertYZ ? new Vector3(vector.x, 0, vector.y) : new Vector3(vector.x, vector.y, 0);
+
         public static Vector2Int ToVector2Int(this Vector3Int vector, bool invertYZ = false)
-             => invertYZ ? new Vector2Int(vector.x, vector.z) : new Vector2Int(vector.x, vector.y);
+            => invertYZ ? new Vector2Int(vector.x, vector.z) : new Vector2Int(vector.x, vector.y);
+
+        public static Vector2Int ToVector2Int(this Vector2 vector)
+            => new Vector2Int((int)vector.x, (int)vector.y);
+
+        public static Vector2 ToVector2(this Vector2Int vector)
+             => new Vector2(vector.x, vector.y);
+
+        public static Vector2 ToVector2(this Vector3 vector, bool invertYZ = false)
+            => invertYZ ? new Vector2(vector.x, vector.z) : new Vector2(vector.x, vector.y);
 
         public static bool HasComponent<T>(this GameObject gameObject)
         {

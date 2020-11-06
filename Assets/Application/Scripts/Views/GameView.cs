@@ -181,7 +181,8 @@ namespace Thirties.Miniclip.TowerDefense
             fightButton.gameObject.SetActive(false);
             giveUpButton.gameObject.SetActive(true);
 
-            resolutionModal.Show(LocalizationManager.GetTranslation(isVictory ? LocalizationKey.ResolutionModalTitle_Victory : LocalizationKey.ResolutionModalTitle_Defeat),
+            resolutionModal.Show(
+                isVictory,
                 () => ExitButtonPressed?.Invoke(),
                 () => RestartButtonPressed?.Invoke());
         }

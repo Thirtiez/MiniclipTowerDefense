@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using I2.Loc;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,6 +12,10 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Animator animator;
 
+        [Header("Background")]
+        [SerializeField]
+        private Image background;
+
         [Header("Texts")]
         [SerializeField]
         private TMP_Text titleText;
@@ -21,12 +26,19 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Button retryButton;
 
+        [Header("Colors")]
+        [SerializeField]
+        private Color victoryColor;
+        [SerializeField]
+        private Color defeatColor;
+
         private static readonly string FadeIn = "FadeIn";
         private static readonly string FadeOut = "FadeOut";
 
-        public void Show(string title, UnityAction onExit = null, UnityAction onRetry = null)
+        public void Show(bool isVictory, UnityAction onExit = null, UnityAction onRetry = null)
         {
-            titleText.text = title;
+            titleText.text = LocalizationManager.GetTranslation(isVictory ? LocalizationKey.ResolutionModalTitle_Victory : LocalizationKey.ResolutionModalTitle_Defeat);
+            background.color = isVictory ? victoryColor : defeatColor;
 
             exitButton.onClick.AddListener(() => onExit?.Invoke());
             exitButton.onClick.AddListener(Hide);

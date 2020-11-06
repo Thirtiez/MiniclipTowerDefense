@@ -9,6 +9,7 @@ namespace Thirties.Miniclip.TowerDefense
         #region Events
 
         public UnityAction PlayButtonPressed { get; set; }
+        public UnityAction QuitButtonPressed { get; set; }
 
         #endregion
 
@@ -16,6 +17,8 @@ namespace Thirties.Miniclip.TowerDefense
 
         [SerializeField]
         private Button playButton;
+        [SerializeField]
+        private Button quitButton;
 
         #endregion
 
@@ -24,6 +27,7 @@ namespace Thirties.Miniclip.TowerDefense
         protected override void Initialize()
         {
             playButton.onClick.AddListener(OnPlayButtonPressed);
+            quitButton.onClick.AddListener(OnQuitButtonPressed);
         }
 
         protected override void OnDestroy()
@@ -38,6 +42,10 @@ namespace Thirties.Miniclip.TowerDefense
         private void OnPlayButtonPressed()
         {
             PlayButtonPressed?.Invoke();
+        }
+        private void OnQuitButtonPressed()
+        {
+            QuitButtonPressed?.Invoke();
         }
 
         #endregion

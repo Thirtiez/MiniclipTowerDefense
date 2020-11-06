@@ -1,6 +1,4 @@
-﻿using Lean.Touch;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
 {

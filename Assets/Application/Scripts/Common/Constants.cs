@@ -25,6 +25,8 @@ namespace Thirties.Miniclip.TowerDefense
 
     public static class LocalizationKey
     {
+        public static readonly string QuitModalTitle = "QuitModalTitle";
+        public static readonly string QuitModalDescription = "QuitModalDescription";
         public static readonly string GiveUpModalTitle = "GiveUpModalTitle";
         public static readonly string GiveUpModalDescription = "GiveUpModalDescription";
         public static readonly string ResolutionModalTitle_Defeat = "ResolutionModalTitle_Defeat";

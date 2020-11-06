@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using I2.Loc;
+using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
 {
@@ -18,6 +19,7 @@ namespace Thirties.Miniclip.TowerDefense
                 audioFader.FadeIn();
 
                 view.PlayButtonPressed += StartGame;
+                view.QuitButtonPressed += QuitGame;
             }
         }
 
@@ -37,6 +39,20 @@ namespace Thirties.Miniclip.TowerDefense
 
             imageFader.FadeOut(GoForward);
             audioFader.FadeOut();
+        }
+
+        private void QuitGame()
+        {
+            applicationController.ConfirmationModal.Show(
+                LocalizationManager.GetTranslation(LocalizationKey.QuitModalTitle),
+                LocalizationManager.GetTranslation(LocalizationKey.QuitModalDescription),
+                () =>
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false
+#else
+                Application.Quit()
+#endif
+                );
         }
     }
 }

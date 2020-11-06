@@ -129,6 +129,30 @@ MonoBehaviour:
       - Sconfitta!
       Flags: 0000
       Languages_Touch: []
+    - Term: QuitButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Quit
+      - Esci
+      Flags: 0000
+      Languages_Touch: []
+    - Term: QuitModalTitle
+      TermType: 0
+      Description: 
+      Languages:
+      - Quit
+      - Esci
+      Flags: 0000
+      Languages_Touch: []
+    - Term: QuitModalDescription
+      TermType: 0
+      Description: 
+      Languages:
+      - Are you sure you want to quit?
+      - Sei sicuro di voler uscire?
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

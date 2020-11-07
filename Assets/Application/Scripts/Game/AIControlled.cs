@@ -26,7 +26,7 @@ namespace Thirties.Miniclip.TowerDefense
             navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.speed = speed;
             navMeshAgent.radius = size * 0.5f;
-            navMeshAgent.height = size;
+            navMeshAgent.height = 1;
         }
 
         protected void OnDestroy()

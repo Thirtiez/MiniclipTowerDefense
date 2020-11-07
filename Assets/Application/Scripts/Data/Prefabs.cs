@@ -14,6 +14,9 @@ namespace Thirties.Miniclip.TowerDefense
         private List<AIControlled> enemies;
         public List<AIControlled> Enemies { get { return enemies; } }
         [SerializeField]
+        private List<Positionable> obstacles;
+        public List<Positionable> Obstacles { get { return obstacles; } }
+        [SerializeField]
         private Positionable headquarters;
         public Positionable Headquarters { get { return headquarters; } }
         [SerializeField]

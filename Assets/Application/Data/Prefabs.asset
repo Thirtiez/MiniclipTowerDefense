@@ -19,6 +19,12 @@ MonoBehaviour:
   - {fileID: 8395749294579684856, guid: 1cbe98aee6821254f83f23fa6e60de30, type: 3}
   enemies:
   - {fileID: 6177223672892653414, guid: 6fcec64b68de10a48a2c04054da8e7fa, type: 3}
+  - {fileID: 2441581492930399518, guid: 14251ba66402d2f4f97e7312198bef5c, type: 3}
+  - {fileID: 7910604915080650971, guid: 6251272760be135418a885219ffe8c61, type: 3}
+  obstacles:
+  - {fileID: 1502694173429295101, guid: c7eff303ecaa5ab4da1bfe75f4657153, type: 3}
+  - {fileID: 5491859862137019527, guid: d2d62d2a4da8eff479f9bca1905561cc, type: 3}
+  - {fileID: 1005797778733682725, guid: 73f3560f1cc6fc04abce5bb0e0d60de9, type: 3}
   headquarters: {fileID: 114097899192887328, guid: 3161e08d8c1cf5d45960544950ea2df9,
     type: 3}
   gridLine: {fileID: 5517333163428802173, guid: 290fd8ee0402afa49a61b2ef54698d85,

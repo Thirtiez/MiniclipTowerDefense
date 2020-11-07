@@ -19,7 +19,7 @@ namespace Thirties.Miniclip.TowerDefense
             var obstacle = GetComponent<NavMeshObstacle>();
             obstacle.shape = NavMeshObstacleShape.Capsule;
             obstacle.radius = size * 0.5f;
-            obstacle.height = size;
+            obstacle.height = 1;
         }
     }
 }

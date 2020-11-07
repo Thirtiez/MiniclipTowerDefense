@@ -41,5 +41,9 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private int enemiesToSpawn;
         public int EnemiesToSpawn { get { return enemiesToSpawn; } }
+
+        [SerializeField]
+        private int obstaclesToSpawn;
+        public int ObstaclesToSpawn { get { return obstaclesToSpawn; } }
     }
 }

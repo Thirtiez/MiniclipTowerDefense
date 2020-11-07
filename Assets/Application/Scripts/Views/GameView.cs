@@ -95,19 +95,22 @@ namespace Thirties.Miniclip.TowerDefense
         public void StartPositioning()
         {
             // Refresh UI
-            deployableButtons.ForEach(deployableButton => deployableButton.Interactable = false);
-
             deployableContainer.gameObject.SetActive(true);
             fightButton.gameObject.SetActive(false);
             giveUpButton.gameObject.SetActive(false);
             doubleTimeButton.gameObject.SetActive(true);
             normalTimeButton.gameObject.SetActive(false);
 
+            deployableButtons.ForEach(deployableButton => deployableButton.Interactable = false);
             doubleTimeButton.interactable = false;
 
             // Instantiate the deployable
-            var positionable = currentDeployable.GetComponent<Positionable>();
-            var position = grid.GetSnappedPosition(Vector3Int.zero, positionable.SizeVector);
+            var ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            var position = Vector3.zero;
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Layer.Floor))
+            {
+                position = hit.point;
+            }
             currentDeployable = Instantiate(currentDeployable, position, Quaternion.identity, positionableContainer);
             currentDeployable.SetPositioning();
 
@@ -140,6 +143,8 @@ namespace Thirties.Miniclip.TowerDefense
 
                 PositioningCancelButtonPressed?.Invoke();
             });
+
+            UpdatePositioning(position);
 
             // Input
             LeanTouch.OnFingerUpdate += OnFingerUpdate;
@@ -259,7 +264,7 @@ namespace Thirties.Miniclip.TowerDefense
                 do
                 {
                     obstacle.Position = new Vector2Int(
-                        Random.Range(minGridDimensions.x, maxGridDimensions.x + 1), 
+                        Random.Range(minGridDimensions.x, maxGridDimensions.x + 1),
                         Random.Range(minGridDimensions.y, maxGridDimensions.y + 1));
                 }
                 while (!IsValidPosition(obstacle));

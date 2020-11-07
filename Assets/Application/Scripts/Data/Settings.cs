@@ -34,7 +34,7 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Vector2Int gridDimensions;
         public Vector2Int GridDimensions { get { return gridDimensions; } }
-        public Bounds GridBounds => new Bounds(Vector3.zero, gridDimensions.ToVector3());
+        public BoundsInt GridBounds => new BoundsInt(MinGridDimensions.ToVector3Int(true), gridDimensions.ToVector3Int(true) + Vector3Int.one);
         public Vector2Int MinGridDimensions => new Vector2Int(-gridDimensions.x / 2, -gridDimensions.y / 2);
         public Vector2Int MaxGridDimensions => new Vector2Int(gridDimensions.x / 2, gridDimensions.y / 2);
 

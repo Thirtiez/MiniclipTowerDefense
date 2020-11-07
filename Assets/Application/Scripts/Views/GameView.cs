@@ -72,6 +72,9 @@ namespace Thirties.Miniclip.TowerDefense
         private bool isVictory = false;
         private int defeatedEnemies = 0;
 
+        private BoundsInt debugPositionableBounds;
+        private BoundsInt debugGridBounds;
+
         #endregion
 
         #region Public methods
@@ -281,20 +284,32 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void UpdatePositioning(Vector3 position)
         {
-            // TODO fix
             var positionable = currentDeployable.GetComponent<Positionable>();
             var bottomLeft = grid.WorldToCell(position).ToVector2Int();
-            var topRight = bottomLeft + positionable.Size;
-            var positionableBounds = new Bounds(bottomLeft.ToVector3(), topRight.ToVector3());
+            var positionableBounds = new BoundsInt(bottomLeft.ToVector3Int(true), positionable.Size.ToVector3Int(true));
             var gridBounds = applicationController.Settings.GridBounds;
 
-            if (gridBounds.Intersects(positionableBounds)
+            debugGridBounds = gridBounds;
+            debugPositionableBounds = positionableBounds;
+
+            if (gridBounds.Contains(positionableBounds)
                 && !positionedTowers.Any(x => x.Bounds.Intersects(positionableBounds)))
             {
                 var snappedPosition = grid.GetSnappedPosition(position, positionable.Size);
-                positionable.Position = bottomLeft;
-
                 currentDeployable.transform.position = snappedPosition;
+
+                positionable.Position = bottomLeft;
+            }
+        }
+
+        protected void OnDrawGizmos()
+        {
+            if (debugGridBounds != null && debugPositionableBounds != null)
+            {
+                Gizmos.DrawWireCube(debugPositionableBounds.center, debugPositionableBounds.size);
+                Gizmos.DrawWireCube(debugGridBounds.center, debugGridBounds.size);
+                Debug.DrawLine(debugPositionableBounds.min, debugPositionableBounds.max, Color.red);
+                Debug.DrawLine(debugGridBounds.min, debugGridBounds.max, Color.green);
             }
         }
 

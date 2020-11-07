@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 935634989597386213}
   - component: {fileID: 935634989597386212}
   - component: {fileID: 114680582449275440}
-  - component: {fileID: 4336033254126454069}
+  - component: {fileID: 528894085655857311}
   m_Layer: 11
   m_Name: Sniper Tower
   m_TagString: Untagged
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 1b04c3c1c10ac4afb990af705d26c1bc, type: 3}
   cost: 15
+  ghostMaterial: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
   ghostObject: {fileID: 6998935568060945567}
   normalObject: {fileID: 5512185335827193575}
 --- !u!114 &935634989597386213
@@ -102,8 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 2, y: 2}
---- !u!65 &4336033254126454069
-BoxCollider:
+--- !u!136 &528894085655857311
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,9 +113,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &5510303021507396441
 GameObject:
   m_ObjectHideFlags: 0
@@ -28508,8 +28510,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7001807947537437031}
-  - component: {fileID: 6973376930158190735}
-  - component: {fileID: 7054057832654664265}
   m_Layer: 9
   m_Name: LaserGhost
   m_TagString: Untagged
@@ -28533,36 +28533,6 @@ Transform:
   m_Father: {fileID: 935634989597386211}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6973376930158190735
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998935568060945567}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.83
-  m_Height: 3.22
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.81, z: 0}
---- !u!54 &7054057832654664265
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998935568060945567}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &6999103965844777865
 GameObject:
   m_ObjectHideFlags: 0

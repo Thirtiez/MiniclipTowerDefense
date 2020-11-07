@@ -42400,8 +42400,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6612268008908730562}
-  - component: {fileID: 6498675906096567346}
-  - component: {fileID: 6589851666127512686}
   m_Layer: 0
   m_Name: MachineGunGhost
   m_TagString: Untagged
@@ -42425,36 +42423,6 @@ Transform:
   m_Father: {fileID: 8239323806611910067}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6498675906096567346
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6614236014459240414}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.16
-  m_Height: 2.25
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.87, z: 0}
---- !u!54 &6589851666127512686
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6614236014459240414}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &6615688003050069854
 GameObject:
   m_ObjectHideFlags: 0
@@ -42565,7 +42533,7 @@ GameObject:
   - component: {fileID: 8239323806611910065}
   - component: {fileID: 8239323806611910066}
   - component: {fileID: 114507993532034534}
-  - component: {fileID: 7480565505662901827}
+  - component: {fileID: 5287144723048394946}
   m_Layer: 11
   m_Name: Guard Tower
   m_TagString: Untagged
@@ -42603,6 +42571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e5a8ddb71725f4711a397ec9f4e31623, type: 3}
   cost: 15
+  ghostMaterial: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
   ghostObject: {fileID: 6614236014459240414}
   normalObject: {fileID: 2761442544625338073}
 --- !u!114 &8239323806611910065
@@ -42654,8 +42623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 2, y: 2}
---- !u!65 &7480565505662901827
-BoxCollider:
+--- !u!136 &5287144723048394946
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42664,6 +42633,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}

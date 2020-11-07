@@ -3,17 +3,21 @@
 namespace Thirties.Miniclip.TowerDefense
 {
     [RequireComponent(typeof(Positionable))]
-    [RequireComponent(typeof(BoxCollider))]
     public class Deployable : MonoBehaviour
     {
+        [Header("UI")]
         [SerializeField]
         private Sprite icon;
         public Sprite Icon { get { return icon; } }
 
+        [Header("Parameters")]
         [SerializeField]
         private int cost = 10;
         public int Cost { get { return cost; } }
 
+        [Header("References")]
+        [SerializeField]
+        private Material ghostMaterial;
         [SerializeField]
         private GameObject ghostObject;
         [SerializeField]
@@ -28,13 +32,9 @@ namespace Thirties.Miniclip.TowerDefense
 
         protected void Awake()
         {
-            var collider = GetComponent<BoxCollider>();
             positionable = GetComponent<Positionable>();
             shooter = GetComponent<Shooter>();
             explosive = GetComponent<Explosive>();
-
-            collider.size = new Vector3(positionable.Size.x, 1, positionable.Size.y);
-            collider.center = new Vector3(0, 0.5f, 0);
         }
 
         public void SetPositioning()
@@ -50,15 +50,23 @@ namespace Thirties.Miniclip.TowerDefense
             radiusVisualizer.transform.localScale = new Vector3(range * 2f, range * 2f, 1);
         }
 
+        public void SetValid(bool isValid)
+        {
+            var color = (isValid ? ApplicationController.Instance.Settings.PrimaryColor : ApplicationController.Instance.Settings.SecondaryColor).WithAlpha(0.5f);
+            sizeVisualizer.color = color;
+            ghostMaterial.color = color;
+
+            radiusVisualizer.gameObject.SetActive(isValid);
+        }
+
         public void SetReady()
         {
             ghostObject.SetActive(false);
             normalObject.SetActive(true);
 
             Destroy(sizeVisualizer.gameObject);
-            sizeVisualizer = null;
-
             Destroy(radiusVisualizer.gameObject);
+            sizeVisualizer = null;
             radiusVisualizer = null;
         }
     }

@@ -28,5 +28,10 @@ namespace Thirties.Miniclip.TowerDefense
                 transform.position = Camera.main.WorldToScreenPoint(follow.position);
             }
         }
+
+        public void SetValid(bool isValid)
+        {
+            confirmButton.interactable = isValid;
+        }
     }
 }

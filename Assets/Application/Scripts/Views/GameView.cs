@@ -69,11 +69,9 @@ namespace Thirties.Miniclip.TowerDefense
         private List<AIControlled> enemies = new List<AIControlled>();
 
         private Deployable currentDeployable;
+        private PositioningButtons currentPositioningButtons;
         private bool isVictory = false;
         private int defeatedEnemies = 0;
-
-        private BoundsInt debugPositionableBounds;
-        private BoundsInt debugGridBounds;
 
         #endregion
 
@@ -115,14 +113,15 @@ namespace Thirties.Miniclip.TowerDefense
             currentDeployable.SetPositioning();
 
             // Instantiate the confirm/cancel positioning buttons
-            var positioningButtons = Instantiate(applicationController.Prefabs.PositioningButtons, canvas.transform);
-            positioningButtons.Initialize(currentDeployable.transform, () =>
+            currentPositioningButtons = Instantiate(applicationController.Prefabs.PositioningButtons, canvas.transform);
+            currentPositioningButtons.Initialize(currentDeployable.transform, () =>
             {
                 Debug.Log($"{currentDeployable.gameObject.name} succesfully deployed.");
 
                 LeanTouch.OnFingerUpdate -= OnFingerUpdate;
 
-                Destroy(positioningButtons.gameObject);
+                Destroy(currentPositioningButtons.gameObject);
+                currentPositioningButtons = null;
 
                 currentDeployable.SetReady();
 
@@ -135,8 +134,10 @@ namespace Thirties.Miniclip.TowerDefense
 
                 LeanTouch.OnFingerUpdate -= OnFingerUpdate;
 
-                Destroy(positioningButtons.gameObject);
+                Destroy(currentPositioningButtons.gameObject);
                 Destroy(currentDeployable.gameObject);
+                currentPositioningButtons = null;
+                currentDeployable = null;
 
                 PositioningCancelButtonPressed?.Invoke();
             });
@@ -284,33 +285,25 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void UpdatePositioning(Vector3 position)
         {
+            // Set 2D position
             var positionable = currentDeployable.GetComponent<Positionable>();
-            var bottomLeft = grid.WorldToCell(position).ToVector2Int();
-            var positionableBounds = new BoundsInt(bottomLeft.ToVector3Int(true), positionable.Size.ToVector3Int(true));
+            positionable.Position = grid.WorldToCell(position).ToVector2Int();
+
+            // Get bounds
+            var positionableBounds = new BoundsInt(positionable.Position.ToVector3Int(true), positionable.Size.ToVector3Int(true));
             var gridBounds = applicationController.Settings.GridBounds;
 
-            debugGridBounds = gridBounds;
-            debugPositionableBounds = positionableBounds;
+            // Check if it's contained in grid bounds and does not intersect any other tower
+            bool isValid = gridBounds.Contains(positionableBounds)
+                && !positionedTowers.Any(x => x.Bounds.Intersects(positionableBounds));
 
-            if (gridBounds.Contains(positionableBounds)
-                && !positionedTowers.Any(x => x.Bounds.Intersects(positionableBounds)))
-            {
-                var snappedPosition = grid.GetSnappedPosition(position, positionable.Size);
-                currentDeployable.transform.position = snappedPosition;
+            // Set validity
+            currentDeployable.SetValid(isValid);
+            currentPositioningButtons.SetValid(isValid);
 
-                positionable.Position = bottomLeft;
-            }
-        }
-
-        protected void OnDrawGizmos()
-        {
-            if (debugGridBounds != null && debugPositionableBounds != null)
-            {
-                Gizmos.DrawWireCube(debugPositionableBounds.center, debugPositionableBounds.size);
-                Gizmos.DrawWireCube(debugGridBounds.center, debugGridBounds.size);
-                Debug.DrawLine(debugPositionableBounds.min, debugPositionableBounds.max, Color.red);
-                Debug.DrawLine(debugGridBounds.min, debugGridBounds.max, Color.green);
-            }
+            // Set transform to snapped position
+            var snappedPosition = grid.GetSnappedPosition(position, positionable.Size);
+            currentDeployable.transform.position = snappedPosition;
         }
 
         private void ExplodeMine(Transform transform)

@@ -14,6 +14,8 @@ namespace Thirties.Miniclip.TowerDefense
 
             if (view != null)
             {
+                applicationController.PauseTime();
+
                 view.StartResolution();
 
                 view.ExitButtonPressed += GoToMainMenu;
@@ -34,12 +36,16 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void GoToMainMenu()
         {
+            applicationController.ResumeTime();
+
             imageFader.FadeOut(() => GoTo(FSMTrigger.Scene.MainMenu));
             audioFader.FadeOut();
         }
 
         private void GoToGame()
         {
+            applicationController.ResumeTime();
+
             imageFader.FadeOut(() => GoTo(FSMTrigger.Scene.Game));
             audioFader.FadeOut();
         }

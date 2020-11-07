@@ -250,10 +250,13 @@ namespace Thirties.Miniclip.TowerDefense
             internalFloor.localScale = new Vector3(gridDimensions.x / 10f, 1, gridDimensions.y / 10f);
 
             // Instantiate headquarters
-            var headquartersPosition = grid.GetSnappedPosition(Vector3Int.zero, applicationController.Prefabs.Headquarters.SizeVector);
-            var headquarters = Instantiate(applicationController.Prefabs.Headquarters, headquartersPosition, Quaternion.identity, positionableContainer);
+            var headquarters = Instantiate(applicationController.Prefabs.Headquarters, Vector3Int.zero, Quaternion.identity, positionableContainer);
+            headquarters.Position = new Vector2Int(-headquarters.Size / 2, -headquarters.Size / 2);
+            headquarters.transform.position = grid.GetSnappedPosition(headquarters.Position, headquarters.SizeVector);
+
             var damageable = headquarters.GetComponent<Damageable>();
             damageable.Destroyed += () => HeadquartersDestroyed?.Invoke();
+
             positionables.Add(headquarters);
 
             // Instantiate obstacles in random positions

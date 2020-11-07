@@ -50,13 +50,28 @@ namespace Thirties.Miniclip.TowerDefense
             }
         }
 
-        private static void InitializeLog()
+        private void InitializeLog()
         {
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.unityLogger.logEnabled = true;
 #else
             Debug.unityLogger.logEnabled = false;
 #endif
+        }
+
+        public void PauseTime()
+        {
+            Time.timeScale = 0;
+        }
+
+        public void ResumeTime()
+        {
+            Time.timeScale = 1;
+        }
+
+        public void DoubleTime()
+        {
+            Time.timeScale = 2;
         }
     }
 }

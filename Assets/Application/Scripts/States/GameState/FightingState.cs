@@ -18,8 +18,8 @@ namespace Thirties.Miniclip.TowerDefense
                 view.StartFighting();
 
                 view.GiveUpButtonPressed += GiveUp;
-                view.DoubleTimeButtonPressed += DoubleTime;
-                view.NormalTimeButtonPressed += NormalTime;
+                view.DoubleTimeButtonPressed += applicationController.DoubleTime;
+                view.NormalTimeButtonPressed += applicationController.PauseTime;
                 view.HeadquartersDestroyed += GoToResolution;
                 view.AllEnemiesDefeated += GoToResolution;
             }
@@ -30,8 +30,8 @@ namespace Thirties.Miniclip.TowerDefense
             if (view != null)
             {
                 view.GiveUpButtonPressed -= GiveUp;
-                view.DoubleTimeButtonPressed -= DoubleTime;
-                view.NormalTimeButtonPressed -= NormalTime;
+                view.DoubleTimeButtonPressed -= applicationController.DoubleTime;
+                view.NormalTimeButtonPressed -= applicationController.PauseTime;
                 view.HeadquartersDestroyed -= GoToResolution;
                 view.AllEnemiesDefeated -= GoToResolution;
             }
@@ -41,34 +41,20 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void GiveUp()
         {
-            StopTime();
+            applicationController.PauseTime();
             applicationController.ConfirmationModal.Show(
                 LocalizationManager.GetTranslation("GiveUpModalTitle").ToUpper(),
                 LocalizationManager.GetTranslation("GiveUpModalDescription"),
                 () => 
                 {
-                    NormalTime();
-                    GoTo(FSMTrigger.Scene.MainMenu);
+                    applicationController.ResumeTime();
+
+                    GoTo(FSMTrigger.Game.Resolution);
                 },
                 () => 
                 {
-                    NormalTime();
+                    applicationController.ResumeTime();
                 });
-        }
-
-        private void DoubleTime()
-        {
-            Time.timeScale = 2;
-        }
-
-        private void NormalTime()
-        {
-            Time.timeScale = 1;
-        }
-
-        private void StopTime()
-        {
-            Time.timeScale = 0;
         }
 
         private void GoToResolution()

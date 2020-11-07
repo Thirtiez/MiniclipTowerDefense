@@ -23,28 +23,40 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Button cancelButton;
 
+        private UnityAction onConfirm;
+        private UnityAction onCancel;
+
         private static readonly string FadeIn = "FadeIn";
         private static readonly string FadeOut = "FadeOut";
 
         public void Show(string title, string description, UnityAction onConfirm = null, UnityAction onCancel = null)
         {
+            this.onConfirm = onConfirm;
+            this.onCancel = onCancel;
+
             titleText.text = title;
             descriptionText.text = description;
-
-            confirmButton.onClick.AddListener(() => onConfirm?.Invoke());
-            confirmButton.onClick.AddListener(Hide);
-            cancelButton.onClick.AddListener(() => onCancel?.Invoke());
-            cancelButton.onClick.AddListener(Hide);
+ 
+            confirmButton.onClick.AddListener(OnConfirmButtonPressed);
+            cancelButton.onClick.AddListener(OnCancelButtonPressed);
 
             animator.SetTrigger(FadeIn);
         }
 
-        private void Hide()
+        private void OnConfirmButtonPressed()
         {
-            confirmButton.onClick.RemoveAllListeners();
-            cancelButton.onClick.RemoveAllListeners();
-
             animator.SetTrigger(FadeOut);
+
+            onConfirm?.Invoke();
+            onConfirm = null;
+        }
+
+        private void OnCancelButtonPressed()
+        {
+            animator.SetTrigger(FadeOut);
+
+            onCancel?.Invoke();
+            onCancel = null;
         }
     }
 }

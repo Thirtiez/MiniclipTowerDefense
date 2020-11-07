@@ -9462,6 +9462,7 @@ GameObject:
   - component: {fileID: 2882417609048962567}
   - component: {fileID: 2883959271358878929}
   - component: {fileID: 3163504027510759613}
+  - component: {fileID: 5873072180103997126}
   m_Layer: 10
   m_Name: EnemyShootEffect
   m_TagString: Untagged
@@ -14126,7 +14127,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243152050609072968, guid: c40bed98f23a748f89472abe9c1a6871,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14137,7 +14138,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 5
-  MaxDistance: 40
+  MaxDistance: 200
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -14230,6 +14231,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &5873072180103997126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3081719611428758597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09153cef651cd748b63f431d0606276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
+  - {fileID: 8300000, guid: d88fd5368c36748d684ff9e8db416da9, type: 3}
+  - {fileID: 8300000, guid: 5bf7c957d8f4a40ff9977d85be58d48f, type: 3}
+  - {fileID: 8300000, guid: 11e15d42e0a474c719970d3b8ddf4b05, type: 3}
+  - {fileID: 8300000, guid: dc29f7080efef42e4bffce14778bca99, type: 3}
+  - {fileID: 8300000, guid: c44a398ac1bfe4fa79c75b96bebddd6a, type: 3}
+  - {fileID: 8300000, guid: 4442df31c446a4ff4ac434e95e5de866, type: 3}
+  - {fileID: 8300000, guid: 5a6ca7a364e294886845ab3c268ea63e, type: 3}
+  - {fileID: 8300000, guid: eed58edbe19094382b8536c1405fed61, type: 3}
+  - {fileID: 8300000, guid: e893433625bae4c0584daccfde0c2866, type: 3}
+  - {fileID: 8300000, guid: 3b5fc9b92d19541449a6b6ab388a7ffa, type: 3}
+  - {fileID: 8300000, guid: ebde808a5205d444193394a272542f85, type: 3}
+  - {fileID: 8300000, guid: b44217f5373cb4a628587e2194eb15a7, type: 3}
+  - {fileID: 8300000, guid: 9cfc9c4c568e54e68a4038ecdf7ffac7, type: 3}
+  playOnAwake: 0
 --- !u!1 &3081792266171407955
 GameObject:
   m_ObjectHideFlags: 0
@@ -42292,8 +42321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePower: 2
-  fireDelay: 1
+  firePower: 0.2
+  fireDelay: 0.1
   fireRange: 2
   targetLayer:
     serializedVersion: 2
@@ -42301,6 +42330,7 @@ MonoBehaviour:
   rotatablePart: {fileID: 0}
   firingPoint: {fileID: 3084805305097918929}
   fireParticles: {fileID: 2882417609048962567}
+  randomSFX: {fileID: 5873072180103997126}
 --- !u!114 &6177223672892653414
 MonoBehaviour:
   m_ObjectHideFlags: 0

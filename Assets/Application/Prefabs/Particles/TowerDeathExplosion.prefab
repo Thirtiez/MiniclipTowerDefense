@@ -27896,6 +27896,7 @@ GameObject:
   - component: {fileID: 2148284385566665987}
   - component: {fileID: 2137719313125610703}
   - component: {fileID: 2182554566043345309}
+  - component: {fileID: 114592298306379800}
   m_Layer: 0
   m_Name: TowerDeathExplosion
   m_TagString: Untagged
@@ -32555,3 +32556,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114592298306379800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264259379326029229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09153cef651cd748b63f431d0606276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: f82348f044e4641f38816d5c92ce9618, type: 3}
+  - {fileID: 8300000, guid: dadcd6f20f187487ca6d872956f98c7d, type: 3}
+  - {fileID: 8300000, guid: 6c7cd8002b13e4ca1974cb33ed5bd19c, type: 3}
+  - {fileID: 8300000, guid: 731364f0ab9af462c884661ca839c89e, type: 3}
+  - {fileID: 8300000, guid: dbb5d987bb85a4b84aa3a9e48e093e7c, type: 3}
+  playOnAwake: 1

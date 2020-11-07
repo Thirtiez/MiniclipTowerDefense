@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 5657901342330574261}
   - component: {fileID: 5953219802319127822}
   - component: {fileID: 6368583730705333477}
+  - component: {fileID: 5950654021579926238}
   m_Layer: 5
   m_Name: Deployable Button
   m_TagString: Untagged
@@ -244,6 +245,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &5950654021579926238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657901342330574259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f78488fb68c354d9c235d6a81f15d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 5f46b33e3c50b44b0af0b921b6373a3e, type: 3}
 --- !u!1 &5657901342801288543
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,12 @@ MonoBehaviour:
   primaryColor: {r: 0.30980393, g: 0.6392157, b: 1, a: 1}
   secondaryColor: {r: 0.9450981, g: 0.2784314, b: 0, a: 1}
   tertiaryColor: {r: 1, g: 0.74509805, b: 0.30980393, a: 1}
+  cancelClip: {fileID: 8300000, guid: 5f46b33e3c50b44b0af0b921b6373a3e, type: 3}
+  confirmClip: {fileID: 8300000, guid: e88a1e640dea0405981990364baf002a, type: 3}
+  defeatClip: {fileID: 8300000, guid: 01e0e2d3367124c909e8666c4241940c, type: 3}
+  victoryClip: {fileID: 8300000, guid: c4256d7b0022a4e628edc3721077fe30, type: 3}
+  mainMenuClip: {fileID: 8300000, guid: 1e8f5015922b04dd1b862cf76c53775a, type: 3}
+  gameClip: {fileID: 8300000, guid: 6ce6d7c4d4f6140f68d2c18955f02e8c, type: 3}
   startingMoney: 200
   gridDimensions: {x: 30, y: 30}
   enemiesToSpawn: 5

@@ -27991,6 +27991,7 @@ GameObject:
   - component: {fileID: 2636005687836252509}
   - component: {fileID: 2635488234189509989}
   - component: {fileID: 2843412825645713809}
+  - component: {fileID: 3442581756872445581}
   m_Layer: 0
   m_Name: MachineGunLvl1Effect
   m_TagString: Untagged
@@ -32661,7 +32662,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 5
-  MaxDistance: 40
+  MaxDistance: 200
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -32754,6 +32755,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &3442581756872445581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761737906984644405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09153cef651cd748b63f431d0606276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
+  - {fileID: 8300000, guid: d88fd5368c36748d684ff9e8db416da9, type: 3}
+  - {fileID: 8300000, guid: 5bf7c957d8f4a40ff9977d85be58d48f, type: 3}
+  - {fileID: 8300000, guid: 11e15d42e0a474c719970d3b8ddf4b05, type: 3}
+  - {fileID: 8300000, guid: dc29f7080efef42e4bffce14778bca99, type: 3}
+  - {fileID: 8300000, guid: c44a398ac1bfe4fa79c75b96bebddd6a, type: 3}
+  - {fileID: 8300000, guid: 4442df31c446a4ff4ac434e95e5de866, type: 3}
+  - {fileID: 8300000, guid: 5a6ca7a364e294886845ab3c268ea63e, type: 3}
+  - {fileID: 8300000, guid: eed58edbe19094382b8536c1405fed61, type: 3}
+  - {fileID: 8300000, guid: e893433625bae4c0584daccfde0c2866, type: 3}
+  - {fileID: 8300000, guid: 3b5fc9b92d19541449a6b6ab388a7ffa, type: 3}
+  - {fileID: 8300000, guid: ebde808a5205d444193394a272542f85, type: 3}
+  - {fileID: 8300000, guid: b44217f5373cb4a628587e2194eb15a7, type: 3}
+  - {fileID: 8300000, guid: 9cfc9c4c568e54e68a4038ecdf7ffac7, type: 3}
+  playOnAwake: 0
 --- !u!1 &2761764384563344047
 GameObject:
   m_ObjectHideFlags: 0
@@ -42611,6 +42640,7 @@ MonoBehaviour:
   rotatablePart: {fileID: 2758231349777967575}
   firingPoint: {fileID: 2763434659868270905}
   fireParticles: {fileID: 2636005687836252509}
+  randomSFX: {fileID: 3442581756872445581}
 --- !u!114 &114507993532034534
 MonoBehaviour:
   m_ObjectHideFlags: 0

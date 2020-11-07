@@ -14,6 +14,8 @@ namespace Thirties.Miniclip.TowerDefense
 
             if (view != null)
             {
+                applicationController.PlayMusic(applicationController.Settings.GameClip);
+
                 imageFader.FadeIn();
                 audioFader.FadeIn();
 

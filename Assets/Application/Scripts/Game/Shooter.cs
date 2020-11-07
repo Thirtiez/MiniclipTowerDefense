@@ -32,6 +32,10 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private ParticleSystem fireParticles;
 
+        [Header("SFX")]
+        [SerializeField]
+        private RandomSFX randomSFX;
+
         private Damageable currentTarget;
         private float elapsedTime = 0;
         private bool keepShooting = false;
@@ -107,6 +111,11 @@ namespace Thirties.Miniclip.TowerDefense
                         fireParticles.transform.position = firingPoint.position;
                         fireParticles.transform.LookAt(currentTarget.transform);
                         fireParticles.Play();
+                    }
+
+                    if (randomSFX != null)
+                    {
+                        randomSFX.PlayRandomClip();
                     }
 
                     currentTarget.Damage(firePower);

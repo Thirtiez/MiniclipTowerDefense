@@ -91,6 +91,7 @@ MonoBehaviour:
   rotatablePart: {fileID: 5506744887710953905}
   firingPoint: {fileID: 5506274498239901343}
   fireParticles: {fileID: 5672581506851669091}
+  randomSFX: {fileID: 7456648262580297892}
 --- !u!114 &114680582449275440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14234,6 +14235,7 @@ GameObject:
   - component: {fileID: 5672581506851669091}
   - component: {fileID: 5674200165041183861}
   - component: {fileID: 5574666783179298023}
+  - component: {fileID: 7456648262580297892}
   m_Layer: 0
   m_Name: LaserFireEffect
   m_TagString: Untagged
@@ -18818,7 +18820,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 5
-  MaxDistance: 50
+  MaxDistance: 200
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -18893,6 +18895,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &7456648262580297892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5511839384386610673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09153cef651cd748b63f431d0606276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: f7f2b958b23574551b561f7e871a8306, type: 3}
+  playOnAwake: 0
 --- !u!1 &5511872635205157183
 GameObject:
   m_ObjectHideFlags: 0

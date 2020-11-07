@@ -14148,6 +14148,7 @@ GameObject:
   - component: {fileID: 4152979271020072254}
   - component: {fileID: 4168578627077507682}
   - component: {fileID: 4195547087477075090}
+  - component: {fileID: 5902679040663910348}
   m_Layer: 10
   m_Name: EnemyShootEffect
   m_TagString: Untagged
@@ -18812,7 +18813,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243152050609072968, guid: c40bed98f23a748f89472abe9c1a6871,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -18823,7 +18824,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 5
-  MaxDistance: 40
+  MaxDistance: 200
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -18916,6 +18917,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &5902679040663910348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258355806017374876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09153cef651cd748b63f431d0606276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: ad00705ac426345289f10c69b726d683, type: 3}
+  - {fileID: 8300000, guid: bfc83a94c61ea44ccb7a2470d50b5f10, type: 3}
+  - {fileID: 8300000, guid: dad118443943d4d31be3a3edb4bb9785, type: 3}
+  - {fileID: 8300000, guid: 02f0cc81719d043e3876b7b6ecdd1566, type: 3}
+  - {fileID: 8300000, guid: 5ae744e8eed7a400b9acdf6d118e7323, type: 3}
+  - {fileID: 8300000, guid: 9844909eb36d64f4eb7125edf616a3ae, type: 3}
+  - {fileID: 8300000, guid: 83f515b3e0b9d48f2867c08c49b787f4, type: 3}
+  playOnAwake: 0
 --- !u!1 &4258492891019815740
 GameObject:
   m_ObjectHideFlags: 0
@@ -42539,6 +42561,7 @@ MonoBehaviour:
   rotatablePart: {fileID: 4256816618907795204}
   firingPoint: {fileID: 4255325271786253092}
   fireParticles: {fileID: 4152979271020072254}
+  randomSFX: {fileID: 5902679040663910348}
 --- !u!114 &7910604915080650971
 MonoBehaviour:
   m_ObjectHideFlags: 0

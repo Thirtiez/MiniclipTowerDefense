@@ -19,7 +19,7 @@ namespace Thirties.Miniclip.TowerDefense
 
                 view.GiveUpButtonPressed += GiveUp;
                 view.DoubleTimeButtonPressed += applicationController.DoubleTime;
-                view.NormalTimeButtonPressed += applicationController.PauseTime;
+                view.NormalTimeButtonPressed += applicationController.ResumeTime;
                 view.HeadquartersDestroyed += GoToResolution;
                 view.AllEnemiesDefeated += GoToResolution;
             }

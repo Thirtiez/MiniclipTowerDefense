@@ -23263,6 +23263,7 @@ GameObject:
   - component: {fileID: 1326853858761074287}
   - component: {fileID: 1302498698796687267}
   - component: {fileID: 1293265100740081629}
+  - component: {fileID: 114456959722428954}
   m_Layer: 0
   m_Name: SmallDeathExplosionPfx
   m_TagString: Untagged
@@ -27922,6 +27923,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114456959722428954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213034148040820417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09153cef651cd748b63f431d0606276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: f0f4d264bc72b4d0a8832cff5dd5a1de, type: 3}
+  - {fileID: 8300000, guid: 762259e894ae7465eb205d15ff0415c7, type: 3}
+  - {fileID: 8300000, guid: ded8dc755033747d1b684ba9ec6ebfb1, type: 3}
+  - {fileID: 8300000, guid: af2a0d5f6c52c4117aed93341b8f36cb, type: 3}
+  - {fileID: 8300000, guid: 68e681912bb2e4047a3ff9a20dac4cb6, type: 3}
+  playOnAwake: 1
 --- !u!1 &1213081267877651089
 GameObject:
   m_ObjectHideFlags: 0

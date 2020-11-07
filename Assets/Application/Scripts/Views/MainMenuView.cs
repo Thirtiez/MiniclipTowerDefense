@@ -41,10 +41,14 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void OnPlayButtonPressed()
         {
+            applicationController.PlaySFX(applicationController.Settings.ConfirmClip);
+
             PlayButtonPressed?.Invoke();
         }
         private void OnQuitButtonPressed()
         {
+            applicationController.PlaySFX(applicationController.Settings.CancelClip);
+
             QuitButtonPressed?.Invoke();
         }
 

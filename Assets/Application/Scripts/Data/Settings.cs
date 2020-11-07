@@ -26,6 +26,28 @@ namespace Thirties.Miniclip.TowerDefense
         private Color tertiaryColor;
         public Color TertiaryColor { get { return tertiaryColor; } }
 
+        [Header("UI SFX")]
+        [SerializeField]
+        private AudioClip cancelClip;
+        public AudioClip CancelClip { get { return cancelClip; } }
+        [SerializeField]
+        private AudioClip confirmClip;
+        public AudioClip ConfirmClip { get { return confirmClip; } }
+        [SerializeField]
+        private AudioClip defeatClip;
+        public AudioClip DefeatClip { get { return defeatClip; } }
+        [SerializeField]
+        private AudioClip victoryClip;
+        public AudioClip VictoryClip { get { return victoryClip; } }
+
+        [Header("Music")]
+        [SerializeField]
+        private AudioClip mainMenuClip;
+        public AudioClip MainMenuClip { get { return mainMenuClip; } }
+        [SerializeField]
+        private AudioClip gameClip;
+        public AudioClip GameClip { get { return gameClip; } }
+
         [Header("Parameters")]
         [SerializeField]
         private int startingMoney;

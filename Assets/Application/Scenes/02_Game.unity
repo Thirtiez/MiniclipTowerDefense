@@ -3092,19 +3092,19 @@ PrefabInstance:
     - target: {fileID: 447637832, guid: 15bc425f08458384a8f3bb5e7a2496ab, type: 3}
       propertyPath: mLocalizeTarget
       value: 
-      objectReference: {fileID: 922041938}
+      objectReference: {fileID: 0}
     - target: {fileID: 873332299, guid: 15bc425f08458384a8f3bb5e7a2496ab, type: 3}
       propertyPath: mLocalizeTarget
       value: 
-      objectReference: {fileID: 1554329267}
+      objectReference: {fileID: 0}
     - target: {fileID: 1858933666, guid: 15bc425f08458384a8f3bb5e7a2496ab, type: 3}
       propertyPath: mLocalizeTarget
       value: 
-      objectReference: {fileID: 1094941262}
+      objectReference: {fileID: 0}
     - target: {fileID: 1742878956, guid: 15bc425f08458384a8f3bb5e7a2496ab, type: 3}
       propertyPath: mLocalizeTarget
       value: 
-      objectReference: {fileID: 757010154}
+      objectReference: {fileID: 0}
     - target: {fileID: 3285416594088163155, guid: 15bc425f08458384a8f3bb5e7a2496ab,
         type: 3}
       propertyPath: m_Material
@@ -3346,6 +3346,7 @@ GameObject:
   - component: {fileID: 527762537}
   - component: {fileID: 527762536}
   - component: {fileID: 527762535}
+  - component: {fileID: 527762539}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -3479,6 +3480,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527762533}
   m_CullTransparentMesh: 0
+--- !u!114 &527762539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527762533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f78488fb68c354d9c235d6a81f15d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 5f46b33e3c50b44b0af0b921b6373a3e, type: 3}
 --- !u!1 &549531974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,18 +3577,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
---- !u!114 &588256538 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4355797104170196154, guid: 15bc425f08458384a8f3bb5e7a2496ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 489421691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &616743152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,6 +3683,7 @@ GameObject:
   - component: {fileID: 685808365}
   - component: {fileID: 685808364}
   - component: {fileID: 685808363}
+  - component: {fileID: 685808367}
   m_Layer: 5
   m_Name: Double Time Button
   m_TagString: Untagged
@@ -3803,6 +3806,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685808361}
   m_CullTransparentMesh: 0
+--- !u!114 &685808367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685808361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f78488fb68c354d9c235d6a81f15d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 5f46b33e3c50b44b0af0b921b6373a3e, type: 3}
 --- !u!1 &692462263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,33 +4397,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
---- !u!114 &757010154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  mTarget: {fileID: 588256538}
-  mAlignment_RTL: 514
-  mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
-  mInitializeAlignment: 0
 --- !u!1 &763180047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,33 +5223,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861978970}
   m_CullTransparentMesh: 0
---- !u!114 &922041938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  mTarget: {fileID: 1362643014}
-  mAlignment_RTL: 514
-  mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
-  mInitializeAlignment: 0
 --- !u!1 &928476335
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,33 +6354,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079169665}
   m_CullTransparentMesh: 0
---- !u!114 &1094941262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  mTarget: {fileID: 1848751574}
-  mAlignment_RTL: 514
-  mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
-  mInitializeAlignment: 0
 --- !u!1 &1135033601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,6 +6460,7 @@ GameObject:
   - component: {fileID: 1139645017}
   - component: {fileID: 1139645016}
   - component: {fileID: 1139645015}
+  - component: {fileID: 1139645019}
   m_Layer: 5
   m_Name: Retry Button
   m_TagString: Untagged
@@ -6658,6 +6594,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139645013}
   m_CullTransparentMesh: 0
+--- !u!114 &1139645019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139645013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f78488fb68c354d9c235d6a81f15d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: e88a1e640dea0405981990364baf002a, type: 3}
 --- !u!1 &1179527397
 GameObject:
   m_ObjectHideFlags: 0
@@ -7262,6 +7211,7 @@ GameObject:
   - component: {fileID: 1298838189}
   - component: {fileID: 1298838188}
   - component: {fileID: 1298838187}
+  - component: {fileID: 1298838191}
   m_Layer: 5
   m_Name: Give Up Button
   m_TagString: Untagged
@@ -7384,6 +7334,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298838185}
   m_CullTransparentMesh: 0
+--- !u!114 &1298838191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298838185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f78488fb68c354d9c235d6a81f15d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 5f46b33e3c50b44b0af0b921b6373a3e, type: 3}
 --- !u!1 &1309273671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7561,30 +7524,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312291161}
   m_CullTransparentMesh: 0
---- !u!114 &1320207662 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6682654735089839935, guid: 15bc425f08458384a8f3bb5e7a2496ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 489421691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1362643014 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8707881832015013690, guid: 15bc425f08458384a8f3bb5e7a2496ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 489421691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1377544234
 GameObject:
   m_ObjectHideFlags: 0
@@ -7926,33 +7865,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1554329267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  mTarget: {fileID: 1320207662}
-  mAlignment_RTL: 514
-  mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
-  mInitializeAlignment: 0
 --- !u!1 &1593852544
 GameObject:
   m_ObjectHideFlags: 0
@@ -9184,18 +9096,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846458120}
   m_CullTransparentMesh: 0
---- !u!114 &1848751574 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 796908115689999653, guid: 15bc425f08458384a8f3bb5e7a2496ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 489421691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1849708901
 GameObject:
   m_ObjectHideFlags: 0
@@ -9830,6 +9730,7 @@ GameObject:
   - component: {fileID: 2056851604}
   - component: {fileID: 2056851606}
   - component: {fileID: 2056851605}
+  - component: {fileID: 2056851609}
   m_Layer: 5
   m_Name: Normal Time Button
   m_TagString: Untagged
@@ -9952,6 +9853,19 @@ RectTransform:
   m_AnchoredPosition: {x: -25, y: -100}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 1, y: 1}
+--- !u!114 &2056851609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056851603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f78488fb68c354d9c235d6a81f15d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 5f46b33e3c50b44b0af0b921b6373a3e, type: 3}
 --- !u!1 &2107544770
 GameObject:
   m_ObjectHideFlags: 0
@@ -9995,6 +9909,7 @@ GameObject:
   - component: {fileID: 2144510332}
   - component: {fileID: 2144510330}
   - component: {fileID: 2144510329}
+  - component: {fileID: 2144510333}
   m_Layer: 5
   m_Name: Fight Button
   m_TagString: Untagged
@@ -10117,3 +10032,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2144510333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144510327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f78488fb68c354d9c235d6a81f15d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: e88a1e640dea0405981990364baf002a, type: 3}

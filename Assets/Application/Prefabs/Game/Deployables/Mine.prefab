@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 863062498360871755}
   - component: {fileID: 114707837254503350}
   - component: {fileID: 1495351139196402389}
+  - component: {fileID: 799915937437218870}
   m_Layer: 12
   m_Name: Mine
   m_TagString: Untagged
@@ -282,8 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b04a7a4a95956f4fa4cccd5dc6cc171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPower: 50
-  explosionRadius: 5
+  explosionPower: 40
+  explosionRadius: 3
   explosionParticlesPrefab: {fileID: 2148284385566665987, guid: fec7c121f9cfbb94499b5abdb087ff05,
     type: 3}
 --- !u!114 &114707837254503350
@@ -298,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48bdee3c7efd154e95fea3cafae5077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 1, y: 1}
+  size: 2
 --- !u!136 &1495351139196402389
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -310,9 +311,25 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &799915937437218870
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395749294579684860}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8966747118084310346
 GameObject:
   m_ObjectHideFlags: 0

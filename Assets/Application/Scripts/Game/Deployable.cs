@@ -43,7 +43,7 @@ namespace Thirties.Miniclip.TowerDefense
             normalObject.SetActive(false);
 
             sizeVisualizer = Instantiate(ApplicationController.Instance.Prefabs.SizeVisualizer, transform);
-            sizeVisualizer.transform.localScale = new Vector3(positionable.Size.x, positionable.Size.y, 1);
+            sizeVisualizer.transform.localScale = new Vector3(positionable.SizeVector.x, positionable.SizeVector.y, 1);
 
             float range = shooter?.FireRange ?? explosive?.ExplosionRadius ?? 0;
             radiusVisualizer = Instantiate(ApplicationController.Instance.Prefabs.RadiusVisualizer, transform);

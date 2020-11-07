@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,69 +34,97 @@ namespace Thirties.Miniclip.TowerDefense
 
         private Damageable currentTarget;
         private float elapsedTime = 0;
+        private bool keepShooting = false;
+        private bool keepLooking = false;
 
-        protected void FixedUpdate()
+        protected void OnDestroy()
         {
-            if (currentTarget == null)
+            if (currentTarget != null)
             {
-                LookForTarget();
-            }
-            else
-            {
-                ShootTarget();
+                currentTarget.Destroyed -= StopShooting;
             }
         }
 
-        private void LookForTarget()
+        public void StartLookingForTarget()
         {
-            var hits = Physics.OverlapSphere(transform.position, fireRange, targetLayer);
-            if (!hits.IsNullOrEmpty())
-            {
-                currentTarget = hits
-                    .OrderBy(x => Vector3.Distance(x.transform.position, transform.position))
-                    .Select(x => x.transform.GetComponent<Damageable>())
-                    .FirstOrDefault(x => x != null && x.IsAlive && fireRange >= Vector3.Distance(x.transform.position, transform.position));
+            keepLooking = true;
 
-                if (currentTarget != null)
-                {
-                    currentTarget.Died += StopShooting;
-
-                    elapsedTime = 0;
-
-                    TargetFound?.Invoke();
-                }
-            }
+            StartCoroutine(LookForTarget());
         }
 
-        private void ShootTarget()
+        private void StartShootingTarget()
         {
-            if (rotatablePart != null)
+            keepShooting = true;
+
+            StartCoroutine(ShootTarget());
+        }
+
+        private IEnumerator LookForTarget()
+        {
+            while (keepLooking)
             {
-                rotatablePart.LookAt(currentTarget.transform);
-            }
-
-            if (elapsedTime > fireDelay)
-            {
-                Debug.Log($"{transform.name} shoots {currentTarget.transform.name} for {firePower} damage");
-
-                currentTarget.Damage(firePower);
-
-                elapsedTime -= fireDelay;
-
-                if (fireParticles != null)
+                var hits = Physics.OverlapSphere(transform.position, fireRange, targetLayer);
+                if (!hits.IsNullOrEmpty())
                 {
-                    fireParticles.transform.position = firingPoint.position;
-                    fireParticles.transform.LookAt(currentTarget.transform);
-                    fireParticles.Play();
+                    currentTarget = hits
+                        .OrderBy(x => Vector3.Distance(x.transform.position, transform.position))
+                        .Select(x => x.transform.GetComponent<Damageable>())
+                        .FirstOrDefault(x => x != null && x.IsAlive);
+
+                    if (currentTarget != null)
+                    {
+                        keepLooking = false;
+
+                        currentTarget.Destroyed += StopShooting;
+
+                        TargetFound?.Invoke();
+                    }
                 }
+
+                yield return null;
             }
 
-            elapsedTime += Time.deltaTime;
+            StartShootingTarget();
+        }
+
+        private IEnumerator ShootTarget()
+        {
+            elapsedTime = fireDelay;
+
+            while (keepShooting)
+            {
+                if (rotatablePart != null)
+                {
+                    rotatablePart.LookAt(currentTarget.transform);
+                }
+
+                if (elapsedTime >= fireDelay)
+                {
+                    Debug.Log($"{transform.name} shoots {currentTarget.transform.name} for {firePower} damage");
+
+                    if (fireParticles != null)
+                    {
+                        fireParticles.transform.position = firingPoint.position;
+                        fireParticles.transform.LookAt(currentTarget.transform);
+                        fireParticles.Play();
+                    }
+
+                    currentTarget.Damage(firePower);
+
+                    elapsedTime -= fireDelay;
+                }
+
+                yield return null;
+
+                elapsedTime += Time.deltaTime;
+            }
+
+            StartLookingForTarget();
         }
 
         private void StopShooting()
         {
-            currentTarget = null;
+            keepShooting = false;
         }
     }
 }

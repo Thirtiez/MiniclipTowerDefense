@@ -12,21 +12,41 @@ namespace Thirties.Miniclip.TowerDefense
         private Shooter shooter;
         private Damageable currentDestination;
 
-        protected void Awake()
-        {
-            navMeshAgent = GetComponent<NavMeshAgent>();
+        [Header("Parameters")]
+        [SerializeField]
+        private float speed = 2.0f;
+        [SerializeField]
+        private float size = 1.0f;
+        public float Size { get { return size; } }
 
+        protected void OnEnable()
+        {
             shooter = GetComponent<Shooter>();
+
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            navMeshAgent.speed = speed;
+            navMeshAgent.radius = size * 0.5f;
+            navMeshAgent.height = size;
+        }
+
+        protected void OnDestroy()
+        {
+            shooter.TargetFound -= Stop;
+            if (currentDestination != null)
+            {
+                currentDestination.Destroyed -= LookForDestination;
+            }
+        }
+
+        public void LookForDestination()
+        {
             shooter.TargetFound += Stop;
-        }
 
-        protected void Start()
-        {
-            SetDestination();
-        }
+            if (currentDestination != null)
+            {
+                currentDestination.Destroyed -= LookForDestination;
+            }
 
-        private void SetDestination()
-        {
             var hits = Physics.OverlapSphere(transform.position, Mathf.Infinity, shooter.TargetLayer);
             if (!hits.IsNullOrEmpty())
             {
@@ -37,7 +57,7 @@ namespace Thirties.Miniclip.TowerDefense
 
                 if (currentDestination != null)
                 {
-                    currentDestination.Died += SetDestination;
+                    currentDestination.Destroyed += LookForDestination;
 
                     navMeshAgent.isStopped = false;
                     navMeshAgent.SetDestination(currentDestination.transform.position);
@@ -47,7 +67,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void Stop()
         {
-            currentDestination = null;
+            shooter.TargetFound -= Stop;
 
             navMeshAgent.isStopped = true;
         }

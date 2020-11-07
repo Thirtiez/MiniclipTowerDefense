@@ -108,7 +108,7 @@ namespace Thirties.Miniclip.TowerDefense
 
             // Instantiate the deployable
             var positionable = currentDeployable.GetComponent<Positionable>();
-            var position = grid.GetSnappedPosition(Vector3Int.zero, positionable.Size);
+            var position = grid.GetSnappedPosition(Vector3Int.zero, positionable.SizeVector);
             currentDeployable = Instantiate(currentDeployable, position, Quaternion.identity, positionableContainer);
             currentDeployable.SetPositioning();
 
@@ -163,6 +163,9 @@ namespace Thirties.Miniclip.TowerDefense
             // Spawn enemies
             var enemy = applicationController.Prefabs.Enemies.FirstOrDefault();
             SpawnEnemy(enemy, applicationController.Settings.EnemiesToSpawn);
+
+            // Start shooting
+            positionedTowers.ForEach(x => x.GetComponent<Shooter>()?.StartLookingForTarget());
 
             // Input
             LeanTouch.OnFingerTap += OnFingerTap;
@@ -241,10 +244,10 @@ namespace Thirties.Miniclip.TowerDefense
             internalFloor.localScale = new Vector3(gridDimensions.x / 10f, 1, gridDimensions.y / 10f);
 
             // Headquarters
-            var position = grid.GetSnappedPosition(Vector3Int.zero, applicationController.Prefabs.Headquarters.Size);
+            var position = grid.GetSnappedPosition(Vector3Int.zero, applicationController.Prefabs.Headquarters.SizeVector);
             var headquarters = Instantiate(applicationController.Prefabs.Headquarters, position, Quaternion.identity, positionableContainer);
             var damageable = headquarters.GetComponent<Damageable>();
-            damageable.Died += () => HeadquartersDestroyed?.Invoke();
+            damageable.Destroyed += () => HeadquartersDestroyed?.Invoke();
             positionedTowers.Add(headquarters);
 
             // Buttons
@@ -267,10 +270,10 @@ namespace Thirties.Miniclip.TowerDefense
 
                 var enemy = Instantiate(enemyPrefab, position, Quaternion.identity, positionableContainer);
                 enemy.gameObject.name = $"Enemy{i}";
-                enemies.Add(enemy);
+                enemy.LookForDestination();
 
                 var damageable = enemy.GetComponent<Damageable>();
-                damageable.Died += () =>
+                damageable.Destroyed += () =>
                 {
                     defeatedEnemies++;
                     if (defeatedEnemies >= applicationController.Settings.EnemiesToSpawn)
@@ -280,6 +283,11 @@ namespace Thirties.Miniclip.TowerDefense
                         AllEnemiesDefeated?.Invoke();
                     }
                 };
+
+                var shooter = enemy.GetComponent<Shooter>();
+                shooter.StartLookingForTarget();
+
+                enemies.Add(enemy);
             }
         }
 
@@ -290,7 +298,7 @@ namespace Thirties.Miniclip.TowerDefense
             positionable.Position = grid.WorldToCell(position).ToVector2Int();
 
             // Get bounds
-            var positionableBounds = new BoundsInt(positionable.Position.ToVector3Int(true), positionable.Size.ToVector3Int(true));
+            var positionableBounds = new BoundsInt(positionable.Position.ToVector3Int(true), positionable.SizeVector.ToVector3Int(true));
             var gridBounds = applicationController.Settings.GridBounds;
 
             // Check if it's contained in grid bounds and does not intersect any other tower
@@ -302,7 +310,7 @@ namespace Thirties.Miniclip.TowerDefense
             currentPositioningButtons.SetValid(isValid);
 
             // Set transform to snapped position
-            var snappedPosition = grid.GetSnappedPosition(position, positionable.Size);
+            var snappedPosition = grid.GetSnappedPosition(position, positionable.SizeVector);
             currentDeployable.transform.position = snappedPosition;
         }
 

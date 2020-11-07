@@ -42534,6 +42534,7 @@ GameObject:
   - component: {fileID: 8239323806611910066}
   - component: {fileID: 114507993532034534}
   - component: {fileID: 5287144723048394946}
+  - component: {fileID: 208017754516772696}
   m_Layer: 11
   m_Name: Guard Tower
   m_TagString: Untagged
@@ -42601,8 +42602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePower: 2
-  fireDelay: 0.3
+  firePower: 1
+  fireDelay: 0.2
   fireRange: 4
   targetLayer:
     serializedVersion: 2
@@ -42622,7 +42623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48bdee3c7efd154e95fea3cafae5077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 2, y: 2}
+  size: 2
 --- !u!136 &5287144723048394946
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -42636,4 +42637,20 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208017754516772696
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239323806611909964}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1, y: 1, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

@@ -6,7 +6,7 @@ namespace Thirties.Miniclip.TowerDefense
     [RequireComponent(typeof(Collider))]
     public class Damageable : MonoBehaviour
     {
-        public UnityAction Died { get; set; }
+        public UnityAction Destroyed { get; set; }
 
         public bool IsAlive { get { return health > 0; } }
 
@@ -18,16 +18,27 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private ParticleSystem deathParticlesPrefab;
 
+        protected void OnEnable()
+        {
+            var collider = GetComponent<CapsuleCollider>();
+            var aiControlled = GetComponent<AIControlled>();
+            var positionable = GetComponent<Positionable>();
+
+            float size = positionable?.Size ?? aiControlled?.Size ?? 1.0f;
+            collider.radius = size * 0.5f;
+            collider.height = size;
+        }
+
         public void Damage(float amount)
         {
             health -= amount;
             if (health <= 0)
             {
-                Died?.Invoke();
-
                 Instantiate(deathParticlesPrefab, transform.position, transform.rotation);
 
                 Destroy(gameObject);
+
+                Destroyed?.Invoke();
             }
         }
     }

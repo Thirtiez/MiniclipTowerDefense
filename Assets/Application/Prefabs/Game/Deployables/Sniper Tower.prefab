@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 935634989597386212}
   - component: {fileID: 114680582449275440}
   - component: {fileID: 528894085655857311}
+  - component: {fileID: 1484884211208895355}
   m_Layer: 11
   m_Name: Sniper Tower
   m_TagString: Untagged
@@ -81,9 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePower: 10
-  fireDelay: 3
-  fireRange: 10
+  firePower: 5
+  fireDelay: 1
+  fireRange: 8
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48bdee3c7efd154e95fea3cafae5077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 2, y: 2}
+  size: 2
 --- !u!136 &528894085655857311
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -116,7 +117,23 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &1484884211208895355
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935634989597386210}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1, y: 1, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5510303021507396441
 GameObject:
   m_ObjectHideFlags: 0

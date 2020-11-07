@@ -21,7 +21,6 @@ namespace Thirties.Miniclip.TowerDefense
             var hits = Physics.OverlapSphere(transform.position, explosionRadius, Layer.Enemy);
             if (!hits.IsNullOrEmpty())
             {
-
                 var damageables = hits.Select(x => x.transform.GetComponent<Damageable>()).ToList();
 
                 damageables.ForEach(damageable =>

@@ -281,6 +281,12 @@ namespace Thirties.Miniclip.TowerDefense
             normalTimeButton.onClick.AddListener(OnNormalTimeButtonPressed);
         }
 
+        protected override void OnDestroy()
+        {
+            LeanTouch.OnFingerUpdate -= OnFingerUpdate;
+            LeanTouch.OnFingerTap -= OnFingerTap;
+        }
+
         #endregion
 
         #region Private methods

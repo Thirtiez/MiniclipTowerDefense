@@ -1,4 +1,5 @@
 ﻿using Lean.Touch;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -77,6 +78,7 @@ namespace Thirties.Miniclip.TowerDefense
         private Deployable currentDeployablePrefab;
         private Deployable currentDeployable;
         private PositioningButtons currentPositioningButtons;
+        private int enemiesDestroyed = 0;
         private bool isVictory = false;
 
         #endregion
@@ -183,16 +185,15 @@ namespace Thirties.Miniclip.TowerDefense
             gridLines.ForEach(x => Destroy(x.gameObject));
 
             // Spawn enemies
-            foreach (var enemy in applicationController.Prefabs.Enemies)
-            {
-                SpawnEnemy(enemy, applicationController.Settings.EnemiesToSpawn);
-            }
+            StartCoroutine(SpawnEnemiesRoutine());
 
             // Start shooting
             positionables.ForEach(x => x.GetComponent<Shooter>()?.StartLookingForTarget());
 
             // Input
             LeanTouch.OnFingerTap += OnFingerTap;
+
+            enemiesDestroyed = 0;
         }
 
         public void StartResolution()
@@ -319,6 +320,17 @@ namespace Thirties.Miniclip.TowerDefense
 
         #region Private methods
 
+        private IEnumerator SpawnEnemiesRoutine()
+        {
+            for (int i = 0; i < applicationController.Settings.EnemiesToSpawn; i++)
+            {
+                var enemy = applicationController.Prefabs.Enemies[Random.Range(0, applicationController.Prefabs.Enemies.Count)];
+                SpawnEnemy(enemy);
+
+                yield return new WaitForSeconds(applicationController.Settings.EnemySpawnDelay);
+            }
+        }
+
         private void SpawnEnemy(AIControlled enemyPrefab, int amount = 1)
         {
             for (int i = 0; i < amount; i++)
@@ -377,8 +389,9 @@ namespace Thirties.Miniclip.TowerDefense
         private void OnEnemyDestroyed(AIControlled enemy)
         {
             enemies.Remove(enemy);
+            enemiesDestroyed++;
 
-            if (enemies.Count <= 0)
+            if (enemiesDestroyed >= applicationController.Settings.EnemiesToSpawn)
             {
                 isVictory = true;
 

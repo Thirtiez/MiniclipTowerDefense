@@ -42645,7 +42645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireDelay: 0.1
-  fireRange: 4
+  fireRange: 6
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024

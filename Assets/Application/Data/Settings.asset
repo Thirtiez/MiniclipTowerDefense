@@ -23,7 +23,8 @@ MonoBehaviour:
   victoryClip: {fileID: 8300000, guid: c4256d7b0022a4e628edc3721077fe30, type: 3}
   mainMenuClip: {fileID: 8300000, guid: 1e8f5015922b04dd1b862cf76c53775a, type: 3}
   gameClip: {fileID: 8300000, guid: 6ce6d7c4d4f6140f68d2c18955f02e8c, type: 3}
-  startingMoney: 200
+  startingMoney: 150
   gridDimensions: {x: 30, y: 30}
-  enemiesToSpawn: 5
-  obstaclesToSpawn: 5
+  enemySpawnDelay: 1
+  enemiesToSpawn: 40
+  obstaclesToSpawn: 10

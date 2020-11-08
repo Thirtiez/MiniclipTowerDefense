@@ -61,6 +61,10 @@ namespace Thirties.Miniclip.TowerDefense
         public Vector2Int MaxGridDimensions => new Vector2Int(gridDimensions.x / 2, gridDimensions.y / 2);
 
         [SerializeField]
+        private float enemySpawnDelay;
+        public float EnemySpawnDelay { get { return enemySpawnDelay; } }
+
+        [SerializeField]
         private int enemiesToSpawn;
         public int EnemiesToSpawn { get { return enemiesToSpawn; } }
 

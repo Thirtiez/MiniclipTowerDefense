@@ -9368,7 +9368,7 @@ GameObject:
   - component: {fileID: 3078034301831407311}
   - component: {fileID: 3068521506389096245}
   - component: {fileID: 3119469290088708771}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9463,7 +9463,7 @@ GameObject:
   - component: {fileID: 2883959271358878929}
   - component: {fileID: 3163504027510759613}
   - component: {fileID: 5873072180103997126}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: EnemyShootEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23650,7 +23650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3084805305097918929}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42345,6 +42345,8 @@ MonoBehaviour:
   fireParticles: {fileID: 2882417609048962567}
   randomSFX: {fileID: 5873072180103997126}
   firePower: 0.2
+  hitParticles: {fileID: 7878380904020383293, guid: 0348ef87f4345364c922347b54e41e9b,
+    type: 3}
 --- !u!195 &1532068225482631034
 NavMeshAgent:
   m_ObjectHideFlags: 0

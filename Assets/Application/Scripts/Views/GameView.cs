@@ -58,6 +58,10 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Transform internalFloor;
 
+        [Header("Particles")]
+        [SerializeField]
+        private ParticleSystem deployParticles;
+
         #endregion
 
         #region Private fields
@@ -68,6 +72,7 @@ namespace Thirties.Miniclip.TowerDefense
         private List<Positionable> positionables = new List<Positionable>();
         private List<AIControlled> enemies = new List<AIControlled>();
 
+        private Deployable currentDeployablePrefab;
         private Deployable currentDeployable;
         private PositioningButtons currentPositioningButtons;
         private bool isVictory = false;
@@ -111,16 +116,20 @@ namespace Thirties.Miniclip.TowerDefense
             {
                 position = hit.point;
             }
-            currentDeployable = Instantiate(currentDeployable, position, Quaternion.identity, positionableContainer);
+            currentDeployable = Instantiate(currentDeployablePrefab, position, Quaternion.identity, positionableContainer);
             currentDeployable.SetPositioning();
 
             // Instantiate the confirm/cancel positioning buttons
             currentPositioningButtons = Instantiate(applicationController.Prefabs.PositioningButtons, canvas.transform);
             currentPositioningButtons.Initialize(currentDeployable.transform, () =>
             {
-                Debug.Log($"{currentDeployable.gameObject.name} succesfully deployed.");
+                currentDeployable.name = $"{currentDeployablePrefab.name} {positionables.Count}";
+
+                Debug.Log($"{currentDeployable.name} succesfully deployed.");
 
                 LeanTouch.OnFingerUpdate -= OnFingerUpdate;
+
+                Instantiate(deployParticles, currentDeployable.transform);
 
                 Destroy(currentPositioningButtons.gameObject);
                 currentPositioningButtons = null;
@@ -132,7 +141,7 @@ namespace Thirties.Miniclip.TowerDefense
                 PositioningConfirmButtonPressed?.Invoke(currentDeployable);
             }, () =>
             {
-                Debug.Log($"{currentDeployable.gameObject.name} deployment canceled.");
+                Debug.Log($"{currentDeployablePrefab.name} deployment canceled.");
 
                 LeanTouch.OnFingerUpdate -= OnFingerUpdate;
 
@@ -253,6 +262,7 @@ namespace Thirties.Miniclip.TowerDefense
 
             // Instantiate headquarters
             var headquarters = Instantiate(applicationController.Prefabs.Headquarters, Vector3Int.zero, Quaternion.identity, positionableContainer);
+            headquarters.name = "Headquarters";
             headquarters.Position = new Vector2Int(-headquarters.Size / 2, -headquarters.Size / 2);
             headquarters.transform.position = grid.GetSnappedPosition(headquarters.Position, headquarters.SizeVector);
 
@@ -275,6 +285,7 @@ namespace Thirties.Miniclip.TowerDefense
                 while (!IsValidPosition(obstacle));
 
                 obstacle.transform.position = grid.GetSnappedPosition(obstacle.Position, obstacle.SizeVector);
+                obstacle.name = $"Obstacle{i}";
 
                 positionables.Add(obstacle);
             }
@@ -303,8 +314,8 @@ namespace Thirties.Miniclip.TowerDefense
                 int cellIndex = Random.Range(0, spawnCells.Count);
                 var position = grid.GetSnappedPosition(spawnCells[cellIndex]);
 
-                var enemy = Instantiate(enemyPrefab, position, Quaternion.identity, positionableContainer);
-                enemy.gameObject.name = $"Enemy{i}";
+                var enemy = Instantiate(enemyPrefab, position, Quaternion.LookRotation(-position), positionableContainer);
+                enemy.name = $"{enemyPrefab.name} {i}";
                 enemy.LookForDestination();
 
                 var damageable = enemy.GetComponent<Damageable>();
@@ -386,7 +397,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void OnDeployableButtonPressed(Deployable deployable)
         {
-            currentDeployable = deployable;
+            currentDeployablePrefab = deployable;
 
             DeployableButtonPressed?.Invoke();
         }

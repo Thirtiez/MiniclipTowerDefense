@@ -26,7 +26,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"{source.name}'s projectile hits {other.transform.name}");
+            Debug.Log($"{source.name} hits {other.name}");
 
             var explosive = GetComponent<Explosive>();
             explosive.Explode();

@@ -11,6 +11,7 @@ namespace Thirties.Miniclip.TowerDefense
         protected override void Shoot()
         {
             var projectile = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity, transform.parent);
+            projectile.name = $"{transform.name}'s rocket";
             projectile.Initialize(transform, currentTarget.transform);
         }
     }

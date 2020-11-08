@@ -2514,6 +2514,8 @@ MonoBehaviour:
   positionableContainer: {fileID: 2107544771}
   gridLineContainer: {fileID: 1758648345}
   internalFloor: {fileID: 1802486864}
+  deployParticles: {fileID: 1110124775741377808, guid: e7d1720aeabe593488eabdeb8d2b93a9,
+    type: 3}
 --- !u!4 &478774666
 Transform:
   m_ObjectHideFlags: 0
@@ -2687,7 +2689,7 @@ PrefabInstance:
     - target: {fileID: 1471156550547156414, guid: 15bc425f08458384a8f3bb5e7a2496ab,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -420.00003
+      value: -419.48108
       objectReference: {fileID: 0}
     - target: {fileID: 1471156550547156414, guid: 15bc425f08458384a8f3bb5e7a2496ab,
         type: 3}

@@ -25,7 +25,7 @@ namespace Thirties.Miniclip.TowerDefense
 
                 damageables.ForEach(damageable =>
                 {
-                    Debug.Log($"{transform.name} exploded hitting {damageable.transform.name} for {explosionPower} damage");
+                    Debug.Log($"{transform.name} exploded hitting {damageable.name} for {explosionPower} damage");
 
                     damageable.Damage(explosionPower);
                 });

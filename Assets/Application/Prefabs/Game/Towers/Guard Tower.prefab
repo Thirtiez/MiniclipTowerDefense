@@ -42654,6 +42654,8 @@ MonoBehaviour:
   fireParticles: {fileID: 2636005687836252509}
   randomSFX: {fileID: 3442581756872445581}
   firePower: 0.5
+  hitParticles: {fileID: 7878380904020383293, guid: 0348ef87f4345364c922347b54e41e9b,
+    type: 3}
 --- !u!136 &5287144723048394946
 CapsuleCollider:
   m_ObjectHideFlags: 0

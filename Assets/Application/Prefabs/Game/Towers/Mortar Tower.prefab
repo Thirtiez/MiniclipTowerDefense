@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4940808201817177398}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: ProjectilePoint
   m_TagString: Untagged
   m_Icon: {fileID: 571167235653111936, guid: 0000000000000000d000000000000000, type: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4940832007766063232}
   - component: {fileID: 4966304602587292668}
   - component: {fileID: 4956783340738643066}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Base_RocketTower_L01_Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4940701814949184100}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RocketTower_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 4940856326053385520}
   - component: {fileID: 4966286597566131572}
   - component: {fileID: 4957447534890182122}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Turret_RocketTower_L01_Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 4940326958922908874}
   - component: {fileID: 4965607710328597590}
   - component: {fileID: 4957682996462388304}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Base_RocketTower_L01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 4939956906568472308}
   - component: {fileID: 4966212799630578274}
   - component: {fileID: 4956986163706554278}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Turret_RocketTower_L01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5000578436360681046}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: RocketGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,6 +766,31 @@ PrefabInstance:
     - target: {fileID: 5853994353810805427, guid: db5aaf78471cc6c4ab5a407c9c6a974a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848417133659615749, guid: db5aaf78471cc6c4ab5a407c9c6a974a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811510997141076868, guid: db5aaf78471cc6c4ab5a407c9c6a974a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812341802555064904, guid: db5aaf78471cc6c4ab5a407c9c6a974a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848632055357188735, guid: db5aaf78471cc6c4ab5a407c9c6a974a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848389769703622527, guid: db5aaf78471cc6c4ab5a407c9c6a974a,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -273,8 +273,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8395749294579684861}
   - component: {fileID: 8395749294579684856}
-  - component: {fileID: 863062498360871755}
   - component: {fileID: 114707837254503350}
+  - component: {fileID: 863062498360871755}
   - component: {fileID: 1495351139196402389}
   - component: {fileID: 799915937437218870}
   m_Layer: 12
@@ -312,11 +312,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6fc95b17a0b1543aa2c9e406d85c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 083307e6b8ec64b9a9b6fdda5a3ceb70, type: 3}
+  icon: {fileID: 21300000, guid: d6c11b9a43dfb413b86a3ff8908088db, type: 3}
   cost: 5
   ghostMaterial: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
   ghostObject: {fileID: 7438463722425524258}
   normalObject: {fileID: 3761324655707803464}
+--- !u!114 &114707837254503350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395749294579684860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48bdee3c7efd154e95fea3cafae5077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1
 --- !u!114 &863062498360871755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,19 +346,6 @@ MonoBehaviour:
   explosionRadius: 2
   explosionParticlesPrefab: {fileID: 2148284385566665987, guid: fec7c121f9cfbb94499b5abdb087ff05,
     type: 3}
---- !u!114 &114707837254503350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8395749294579684860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b48bdee3c7efd154e95fea3cafae5077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 1
 --- !u!136 &1495351139196402389
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -37,8 +37,6 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void StartGame()
         {
-            applicationController.CurrentMoney = 200;
-
             imageFader.FadeOut(GoForward);
             audioFader.FadeOut();
         }

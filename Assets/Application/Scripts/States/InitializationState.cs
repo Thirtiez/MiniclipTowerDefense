@@ -12,11 +12,6 @@ namespace Thirties.Miniclip.TowerDefense
             string sceneName = SceneManager.GetActiveScene().name;
             int trigger = Animator.StringToHash(sceneName.Substring(3));
 
-            if (trigger == FSMTrigger.Scene.Game)
-            {
-                applicationController.CurrentMoney = 200;
-            }
-
             GoTo(trigger);
         }
 

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 193506301632666973}
   - component: {fileID: 7435446613108214685}
-  - component: {fileID: 6189455110764832473}
   - component: {fileID: 2441581492930399518}
+  - component: {fileID: 6953055392832706873}
   - component: {fileID: 6996670441282639106}
   - component: {fileID: 7005203628200578100}
   m_Layer: 10
@@ -53,28 +53,6 @@ MonoBehaviour:
   health: 20
   deathParticlesPrefab: {fileID: 1326853858761074287, guid: 891054391b198cc4f8a030992b76ad2f,
     type: 3}
---- !u!114 &6189455110764832473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4248992399912081905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePower: 6
-  fireDelay: 2
-  fireRange: 3
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  rotatablePart: {fileID: 5968558234498598839}
-  firingPoint: {fileID: 5968465468146812193}
-  fireParticles: {fileID: 5771643596582520511}
-  randomSFX: {fileID: 2457412817700146483}
 --- !u!114 &2441581492930399518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +67,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   size: 2
+--- !u!114 &6953055392832706873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248992399912081905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bf8311e33637745a8161cd8f510059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDelay: 1
+  fireRange: 3
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  rotatablePart: {fileID: 5968558234498598839}
+  firingPoint: {fileID: 5968465468146812193}
+  fireParticles: {fileID: 5771643596582520511}
+  randomSFX: {fileID: 2457412817700146483}
+  firePower: 4
 --- !u!195 &6996670441282639106
 NavMeshAgent:
   m_ObjectHideFlags: 0

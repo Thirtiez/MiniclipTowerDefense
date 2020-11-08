@@ -42559,9 +42559,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8239323806611910067}
   - component: {fileID: 8239323806611910064}
-  - component: {fileID: 8239323806611910065}
-  - component: {fileID: 8239323806611910066}
   - component: {fileID: 114507993532034534}
+  - component: {fileID: 8239323806611910065}
+  - component: {fileID: 7739741499588719324}
   - component: {fileID: 5287144723048394946}
   - component: {fileID: 208017754516772696}
   m_Layer: 11
@@ -42599,11 +42599,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6fc95b17a0b1543aa2c9e406d85c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: e5a8ddb71725f4711a397ec9f4e31623, type: 3}
-  cost: 15
+  icon: {fileID: 21300000, guid: 3631244dc04164d079a3302a39dbc0c6, type: 3}
+  cost: 10
   ghostMaterial: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
   ghostObject: {fileID: 6614236014459240414}
   normalObject: {fileID: 2761442544625338073}
+--- !u!114 &114507993532034534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239323806611909964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48bdee3c7efd154e95fea3cafae5077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 2
 --- !u!114 &8239323806611910065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42619,7 +42632,7 @@ MonoBehaviour:
   health: 40
   deathParticlesPrefab: {fileID: 2148284385566665987, guid: fec7c121f9cfbb94499b5abdb087ff05,
     type: 3}
---- !u!114 &8239323806611910066
+--- !u!114 &7739741499588719324
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42628,11 +42641,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8239323806611909964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb23541e3e193740a8a9941d40f5b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 26bf8311e33637745a8161cd8f510059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePower: 1
-  fireDelay: 0.2
+  fireDelay: 0.1
   fireRange: 4
   targetLayer:
     serializedVersion: 2
@@ -42641,19 +42653,7 @@ MonoBehaviour:
   firingPoint: {fileID: 2763434659868270905}
   fireParticles: {fileID: 2636005687836252509}
   randomSFX: {fileID: 3442581756872445581}
---- !u!114 &114507993532034534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8239323806611909964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b48bdee3c7efd154e95fea3cafae5077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 2
+  firePower: 0.5
 --- !u!136 &5287144723048394946
 CapsuleCollider:
   m_ObjectHideFlags: 0

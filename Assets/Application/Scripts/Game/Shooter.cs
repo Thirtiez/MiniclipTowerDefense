@@ -5,15 +5,13 @@ using UnityEngine.Events;
 
 namespace Thirties.Miniclip.TowerDefense
 {
-    public class Shooter : MonoBehaviour
+    public abstract class Shooter : MonoBehaviour
     {
         public UnityAction TargetFound { get; set; }
 
         public LayerMask TargetLayer { get { return targetLayer; } }
 
         [Header("Parameters")]
-        [SerializeField]
-        private float firePower = 5.0f;
         [SerializeField]
         private float fireDelay = 1.0f;
         [SerializeField]
@@ -26,17 +24,17 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Transform rotatablePart;
         [SerializeField]
-        private Transform firingPoint;
+        protected Transform firingPoint;
 
         [Header("Particles")]
         [SerializeField]
-        private ParticleSystem fireParticles;
+        protected ParticleSystem fireParticles;
 
         [Header("SFX")]
         [SerializeField]
-        private RandomSFX randomSFX;
+        protected RandomSFX randomSFX;
 
-        private Damageable currentTarget;
+        protected Damageable currentTarget;
         private float elapsedTime = 0;
         private bool keepShooting = false;
         private bool keepLooking = false;
@@ -48,6 +46,13 @@ namespace Thirties.Miniclip.TowerDefense
                 currentTarget.Destroyed -= StopShooting;
             }
         }
+
+        protected void Update()
+        {
+            elapsedTime += Time.deltaTime;
+        }
+
+        protected abstract void Shoot();
 
         public void StartLookingForTarget()
         {
@@ -93,7 +98,7 @@ namespace Thirties.Miniclip.TowerDefense
 
         private IEnumerator ShootTarget()
         {
-            elapsedTime = fireDelay;
+            //elapsedTime = fireDelay;
 
             while (keepShooting)
             {
@@ -104,8 +109,6 @@ namespace Thirties.Miniclip.TowerDefense
 
                 if (elapsedTime >= fireDelay)
                 {
-                    Debug.Log($"{transform.name} shoots {currentTarget.transform.name} for {firePower} damage");
-
                     if (fireParticles != null)
                     {
                         fireParticles.transform.position = firingPoint.position;
@@ -118,14 +121,14 @@ namespace Thirties.Miniclip.TowerDefense
                         randomSFX.PlayRandomClip();
                     }
 
-                    currentTarget.Damage(firePower);
+                    Shoot();
 
-                    elapsedTime -= fireDelay;
+                    elapsedTime %= fireDelay;
                 }
 
                 yield return null;
 
-                elapsedTime += Time.deltaTime;
+                //elapsedTime += Time.deltaTime;
             }
 
             StartLookingForTarget();

@@ -188,6 +188,8 @@ namespace Thirties.Miniclip.TowerDefense
                 isVictory,
                 () => ExitButtonPressed?.Invoke(),
                 () => RestartButtonPressed?.Invoke());
+
+            applicationController.PlaySFX(isVictory ? applicationController.Settings.VictoryClip : applicationController.Settings.DefeatClip);
         }
 
         #endregion

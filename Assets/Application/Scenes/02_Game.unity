@@ -1420,8 +1420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ec02e2ad3948647ad9f7a6245aec41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSensitivity: 0.2
-  zoomSensitivity: 0.005
+  panSensitivity: 0.8
+  zoomSensitivity: 0.02
   minZoomValue: 3
   maxZoomValue: 12
 --- !u!124 &254671623
@@ -2682,12 +2682,12 @@ PrefabInstance:
     - target: {fileID: 1471156550547156414, guid: 15bc425f08458384a8f3bb5e7a2496ab,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960.00006
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 1471156550547156414, guid: 15bc425f08458384a8f3bb5e7a2496ab,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -420.00003
+      value: -420
       objectReference: {fileID: 0}
     - target: {fileID: 1471156550547156414, guid: 15bc425f08458384a8f3bb5e7a2496ab,
         type: 3}
@@ -3144,6 +3144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7035305372390908302, guid: 15bc425f08458384a8f3bb5e7a2496ab,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15bc425f08458384a8f3bb5e7a2496ab, type: 3}

@@ -15,6 +15,7 @@ namespace Thirties.Miniclip.TowerDefense
             if (view != null)
             {
                 applicationController.PauseTime();
+                applicationController.AudioFader.FadeOut();
 
                 view.StartResolution();
 

@@ -15,9 +15,13 @@ namespace Thirties.Miniclip.TowerDefense
         [Range(0f, 1f)]
         [SerializeField]
         private float fadeOutValue = 0f;
+        public float FadeOutValue { get { return fadeOutValue; } set { fadeOutValue = value; } }
+
         [Range(0f, 1f)]
         [SerializeField]
         private float fadeInValue = 1f;
+        public float FadeInValue { get { return fadeInValue; } set { fadeInValue = value; } }
+
         [SerializeField]
         private float defaultFadeTime = 0.5f;
 
@@ -33,7 +37,7 @@ namespace Thirties.Miniclip.TowerDefense
 
             while (elapsedTime < fadeTime)
             {
-                elapsedTime += Time.deltaTime;
+                elapsedTime += Time.unscaledDeltaTime;
                 float t = Mathf.Clamp01(elapsedTime / fadeTime);
                 float valueFade = Mathf.Lerp(valueFrom, valueTo, t);
 

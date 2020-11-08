@@ -65,8 +65,11 @@ namespace Thirties.Miniclip.TowerDefense
 #endif
         }
 
-        public void PlayMusic(AudioClip clip)
+        public void PlayMusic(AudioClip clip, float volume = 1.0f)
         {
+            musicSource.volume = volume;
+            audioFader.FadeInValue = volume;
+
             if (clip != musicSource.clip)
             {
                 musicSource.Stop();
@@ -75,8 +78,9 @@ namespace Thirties.Miniclip.TowerDefense
             }
         }
 
-        public void PlaySFX(AudioClip clip)
+        public void PlaySFX(AudioClip clip, float volume = 1.0f)
         {
+            sfxSource.volume = volume;
             sfxSource.PlayOneShot(clip);
         }
 

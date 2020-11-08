@@ -42,7 +42,7 @@ namespace Thirties.Miniclip.TowerDefense
             var lastWorldPoint = Camera.main.ScreenToWorldPoint(lastScreenPoint);
             var worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
 
-            var worldDelta = worldPoint - lastWorldPoint;
+            var worldDelta = lastWorldPoint - worldPoint;
 
             Camera.main.transform.position += worldDelta * panSensitivity;
         }
@@ -52,7 +52,7 @@ namespace Thirties.Miniclip.TowerDefense
             float lastScreenDistance = LeanGesture.GetLastScreenDistance();
             float screenDistance = LeanGesture.GetScreenDistance();
 
-            float delta = screenDistance - lastScreenDistance;
+            float delta = lastScreenDistance - screenDistance;
 
             Camera.main.orthographicSize += delta * zoomSensitivity;
             Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoomValue, maxZoomValue);

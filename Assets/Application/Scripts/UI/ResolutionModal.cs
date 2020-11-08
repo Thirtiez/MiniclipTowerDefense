@@ -31,7 +31,9 @@ namespace Thirties.Miniclip.TowerDefense
 
         public void Show(bool isVictory, UnityAction onExit = null, UnityAction onRetry = null)
         {
-            var color = isVictory ? ApplicationController.Instance.Settings.PrimaryColor : ApplicationController.Instance.Settings.SecondaryColor;
+            var applicationController = ApplicationController.Instance;
+
+            var color = isVictory ? applicationController.Settings.PrimaryColor : applicationController.Settings.SecondaryColor;
             background.color = color.WithAlpha(0.4f);
 
             titleText.text = LocalizationManager.GetTranslation(isVictory ? LocalizationKey.ResolutionModalTitle_Victory : LocalizationKey.ResolutionModalTitle_Defeat);

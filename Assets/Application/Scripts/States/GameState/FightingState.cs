@@ -15,6 +15,8 @@ namespace Thirties.Miniclip.TowerDefense
 
             if (view != null)
             {
+                applicationController.PlayMusic(applicationController.Settings.GameClip, 1.0f);
+
                 view.StartFighting();
 
                 view.GiveUpButtonPressed += GiveUp;

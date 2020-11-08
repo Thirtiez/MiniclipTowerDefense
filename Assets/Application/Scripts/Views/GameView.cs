@@ -32,11 +32,13 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Canvas canvas;
         [SerializeField]
+        private Transform healthBarContainer;
+        [SerializeField]
+        private Transform deployableContainer;
+        [SerializeField]
         private ResolutionModal resolutionModal;
         [SerializeField]
         private TMP_Text moneyText;
-        [SerializeField]
-        private Transform deployableContainer;
 
         [Header("Buttons")]
         [SerializeField]
@@ -128,6 +130,13 @@ namespace Thirties.Miniclip.TowerDefense
                 Debug.Log($"{currentDeployable.name} succesfully deployed.");
 
                 LeanTouch.OnFingerUpdate -= OnFingerUpdate;
+
+                var damageable = currentDeployable.GetComponent<Damageable>();
+                if (damageable != null)
+                {
+                    var healthBar = Instantiate(applicationController.Prefabs.HealthBar, healthBarContainer);
+                    healthBar.Initialize(damageable);
+                }
 
                 Instantiate(deployParticles, currentDeployable.transform);
 
@@ -269,6 +278,9 @@ namespace Thirties.Miniclip.TowerDefense
             var damageable = headquarters.GetComponent<Damageable>();
             damageable.Destroyed += () => HeadquartersDestroyed?.Invoke();
 
+            var healthBar = Instantiate(applicationController.Prefabs.HealthBar, healthBarContainer);
+            healthBar.Initialize(damageable);
+
             positionables.Add(headquarters);
 
             // Instantiate obstacles in random positions
@@ -314,6 +326,7 @@ namespace Thirties.Miniclip.TowerDefense
                 int cellIndex = Random.Range(0, spawnCells.Count);
                 var position = grid.GetSnappedPosition(spawnCells[cellIndex]);
 
+                // Setup enemy
                 var enemy = Instantiate(enemyPrefab, position, Quaternion.LookRotation(-position), positionableContainer);
                 enemy.name = $"{enemyPrefab.name} {i}";
                 enemy.LookForDestination();
@@ -323,6 +336,10 @@ namespace Thirties.Miniclip.TowerDefense
 
                 var shooter = enemy.GetComponent<Shooter>();
                 shooter.StartLookingForTarget();
+
+                // Setup health bar
+                var healthBar = Instantiate(applicationController.Prefabs.HealthBar, healthBarContainer);
+                healthBar.Initialize(damageable);
 
                 enemies.Add(enemy);
             }

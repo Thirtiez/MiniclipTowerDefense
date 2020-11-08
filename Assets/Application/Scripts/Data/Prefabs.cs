@@ -31,6 +31,9 @@ namespace Thirties.Miniclip.TowerDefense
         private PositioningButtons positioningButtons;
         public PositioningButtons PositioningButtons { get { return positioningButtons; } }
         [SerializeField]
+        private HealthBar healthBar;
+        public HealthBar HealthBar { get { return healthBar; } }
+        [SerializeField]
         private SpriteRenderer sizeVisualizer;
         public SpriteRenderer SizeVisualizer { get { return sizeVisualizer; } }
         [SerializeField]

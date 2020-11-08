@@ -33,6 +33,8 @@ MonoBehaviour:
     type: 3}
   positioningButtons: {fileID: 6849752932555752871, guid: d55b1bbc66fd43a4fa6835345e468988,
     type: 3}
+  healthBar: {fileID: 8321496423421088213, guid: 304cfe0b8537e1c4795e100cd5dd1234,
+    type: 3}
   sizeVisualizer: {fileID: 2028814890522836679, guid: 162b000557185ad418b46be1ae450c8a,
     type: 3}
   radiusVisualizer: {fileID: 364016140569233010, guid: d3907acb5fe23144096b7e1153149ce1,

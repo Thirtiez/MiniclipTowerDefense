@@ -24,13 +24,10 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void OnFingerUpdate(LeanFinger finger)
         {
-            if (LeanTouch.Fingers.Count == 1 && finger.TapCount >= 1)
-            {
-                HandleCameraPan();
-            }
-            else if (LeanTouch.Fingers.Count == 2)
+            if (LeanTouch.Fingers.Count == 2)
             {
                 HandleCameraZoom();
+                HandleCameraPan();
             }
         }
 

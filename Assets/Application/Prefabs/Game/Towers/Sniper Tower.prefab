@@ -51,6 +51,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 53652022b1d444a5c9e9630488e44e13, type: 3}
+  name:
+    mTerm: SniperTowerName
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
   cost: 20
   ghostMaterial: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
   ghostObject: {fileID: 6998935568060945567}
@@ -95,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bf8311e33637745a8161cd8f510059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePower: 8
   fireDelay: 1
   fireRange: 10
   targetLayer:
@@ -104,7 +111,6 @@ MonoBehaviour:
   firingPoint: {fileID: 5506274498239901343}
   fireParticles: {fileID: 5672581506851669091}
   randomSFX: {fileID: 7456648262580297892}
-  firePower: 8
   hitParticles: {fileID: 2136387149984200332, guid: ceee44c8aefe97d47a5bd8e8f4c69439,
     type: 3}
 --- !u!136 &528894085655857311

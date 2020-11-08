@@ -42600,6 +42600,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3631244dc04164d079a3302a39dbc0c6, type: 3}
+  name:
+    mTerm: GuardTowerName
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
   cost: 10
   ghostMaterial: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
   ghostObject: {fileID: 6614236014459240414}
@@ -42644,6 +42650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bf8311e33637745a8161cd8f510059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePower: 0.5
   fireDelay: 0.1
   fireRange: 6
   targetLayer:
@@ -42653,7 +42660,6 @@ MonoBehaviour:
   firingPoint: {fileID: 2763434659868270905}
   fireParticles: {fileID: 2636005687836252509}
   randomSFX: {fileID: 3442581756872445581}
-  firePower: 0.5
   hitParticles: {fileID: 7878380904020383293, guid: 0348ef87f4345364c922347b54e41e9b,
     type: 3}
 --- !u!136 &5287144723048394946

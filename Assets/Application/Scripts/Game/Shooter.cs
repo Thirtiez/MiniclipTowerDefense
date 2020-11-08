@@ -10,8 +10,12 @@ namespace Thirties.Miniclip.TowerDefense
         public UnityAction TargetFound { get; set; }
 
         public LayerMask TargetLayer { get { return targetLayer; } }
+        public float Dps { get { return firePower / fireDelay; } }
 
         [Header("Parameters")]
+        [Header("Hitscan parameters")]
+        [SerializeField]
+        protected float firePower = 5.0f;
         [SerializeField]
         private float fireDelay = 1.0f;
         [SerializeField]

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ namespace Thirties.Miniclip.TowerDefense
         private Image normalIcon;
         [SerializeField]
         private Image highlightedIcon;
+        [SerializeField]
+        private TMP_Text costText;
 
         private Deployable deployable;
 
@@ -24,6 +27,7 @@ namespace Thirties.Miniclip.TowerDefense
 
             normalIcon.sprite = deployable.Icon;
             highlightedIcon.sprite = deployable.Icon;
+            costText.text = deployable.Cost.ToString();
 
             button.onClick.AddListener(() => buttonPressed?.Invoke(deployable));
         }

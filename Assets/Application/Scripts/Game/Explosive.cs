@@ -8,6 +8,7 @@ namespace Thirties.Miniclip.TowerDefense
         [Header("Parameters")]
         [SerializeField]
         private float explosionPower = 50.0f;
+        public float ExplosionPower { get { return explosionPower; } set { explosionPower = value; } }
         [SerializeField]
         private float explosionRadius = 5.0f;
         public float ExplosionRadius { get { return explosionRadius; } }

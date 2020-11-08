@@ -95,10 +95,14 @@ AudioMixerSnapshotController:
     add06742feb304c64954734f5609aed0: 0
     550d01e2d8391447697d6d32f31d146c: 0
     753cd5a35531c4a40a32ccda62da4eec: 1
+    a83b20c3f271f4beaa300a22fcca5014: 0.0072646476
     373899e3330c5467b8bdd79715795059: 2.4583216
     c347f134ecda04c128f6a23c953769d5: 0
     dc8e92f5f71f240d5a7d429ba105a83a: 2
+    1896e366655ab49dab917b1bd8888514: -3.8468575
+    5503c5171eec046988a4ebdd410b8f8d: -7.8940816
     c3942ee7b0b904ddc8acbf5d56c6c356: -35
+    93f496e8b347845cd8f10350304c2c2d: -7.8940816
     e25399f8ae6a444c19cab6ab3b60fe3f: -9.8
     03f56669075184e9598d0680fbbcde46: 2.5
     7d131d892c16d46fdbc304eef29b462b: -2.018035
@@ -108,7 +112,7 @@ AudioMixerSnapshotController:
     c272ff0b6351f40b99d24a0ab82eaff9: -2.4803946
     29dfb60c5bc2b4d099ac8b526c1bd4d9: 2.4583216
     dcf2423c0d9984d109cad94472d50588: -9.9
-    e33fdf1d6c22443acbf80725d8c562e7: 0.04171297
+    e33fdf1d6c22443acbf80725d8c562e7: 2.0906024
     92ff08be0371343f7910174dc4df029e: -5
   m_TransitionOverrides: {}
 --- !u!243 &243025053255917500
@@ -396,6 +400,7 @@ AudioMixerGroupController:
   m_Pitch: cfc22699c8cf04fc496477553c1ac221
   m_Effects:
   - {fileID: 244620323464153236}
+  - {fileID: 244984881804622034}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -905,6 +910,26 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 2290b9dc8eb804ffd87fd6b2d39fad8e
   m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244984881804622034
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: a74bd2714cdb57245850b93a867e46a9
+  m_EffectName: Normalize
+  m_MixLevel: a100f2eb28971914c9815e7f5d6cf361
+  m_Parameters:
+  - m_ParameterName: Fade in time
+    m_GUID: dbef96684e5bd81489f4a66aecd314c4
+  - m_ParameterName: Lowest volume
+    m_GUID: 0bc6fe93b6116ba4daf308a93d40bbbc
+  - m_ParameterName: Maximum amp
+    m_GUID: b185d7551b7c7bc48ab6473c7856caf2
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

@@ -40,6 +40,8 @@ namespace Thirties.Miniclip.TowerDefense
         private ResolutionModal resolutionModal;
         [SerializeField]
         private TMP_Text moneyText;
+        [SerializeField]
+        private TMP_Text timeText;
 
         [Header("Buttons")]
         [SerializeField]
@@ -125,7 +127,7 @@ namespace Thirties.Miniclip.TowerDefense
 
             // Instantiate the confirm/cancel positioning buttons
             currentPositioningButtons = Instantiate(applicationController.Prefabs.PositioningButtons, canvas.transform);
-            currentPositioningButtons.Initialize(currentDeployable.transform, () =>
+            currentPositioningButtons.Initialize(currentDeployable, () =>
             {
                 currentDeployable.name = $"{currentDeployablePrefab.name} {positionables.Count}";
 
@@ -444,18 +446,18 @@ namespace Thirties.Miniclip.TowerDefense
 
         private void OnDoubleTimeButtonPressed()
         {
-            DoubleTimeButtonPressed?.Invoke();
-
             doubleTimeButton.gameObject.SetActive(false);
             normalTimeButton.gameObject.SetActive(true);
+
+            DoubleTimeButtonPressed?.Invoke();
         }
 
         private void OnNormalTimeButtonPressed()
         {
-            NormalTimeButtonPressed?.Invoke();
-
             doubleTimeButton.gameObject.SetActive(true);
             normalTimeButton.gameObject.SetActive(false);
+
+            NormalTimeButtonPressed?.Invoke();
         }
 
         #endregion

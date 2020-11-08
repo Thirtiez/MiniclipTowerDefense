@@ -12,7 +12,7 @@ namespace Thirties.Miniclip.TowerDefense
         {
             var projectile = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity, transform.parent);
             projectile.name = $"{transform.name}'s rocket";
-            projectile.Initialize(transform, currentTarget.transform);
+            projectile.Initialize(transform, currentTarget.transform, firePower);
         }
     }
 }

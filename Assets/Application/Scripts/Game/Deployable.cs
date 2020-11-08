@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using I2.Loc;
+using UnityEngine;
 
 namespace Thirties.Miniclip.TowerDefense
 {
@@ -9,6 +10,9 @@ namespace Thirties.Miniclip.TowerDefense
         [SerializeField]
         private Sprite icon;
         public Sprite Icon { get { return icon; } }
+        [SerializeField]
+        private LocalizedString name;
+        public LocalizedString Name { get { return name; } }
 
         [Header("Parameters")]
         [SerializeField]

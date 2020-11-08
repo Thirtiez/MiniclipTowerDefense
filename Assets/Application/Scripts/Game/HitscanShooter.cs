@@ -4,10 +4,6 @@ namespace Thirties.Miniclip.TowerDefense
 {
     public class HitscanShooter : Shooter
     {
-        [Header("Hitscan parameters")]
-        [SerializeField]
-        private float firePower = 5.0f;
-
         [Header("Hitscan particles")]
         [SerializeField]
         private ParticleSystem hitParticles;

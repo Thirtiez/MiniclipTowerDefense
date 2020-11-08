@@ -11,11 +11,15 @@ namespace Thirties.Miniclip.TowerDefense
 
         private Transform source;
         private Transform target;
+        private Explosive explosive;
 
-        public void Initialize(Transform source, Transform target)
+        public void Initialize(Transform source, Transform target, float power)
         {
             this.source = source;
             this.target = target;
+
+            explosive = GetComponent<Explosive>();
+            explosive.ExplosionPower = power;
         }
 
         private void Update()

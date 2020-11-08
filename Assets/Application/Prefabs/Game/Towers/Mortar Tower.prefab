@@ -52,6 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: fa91237b5487541158165bfce6ebfa0c, type: 3}
+  name:
+    mTerm: MortarTowerName
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
   cost: 40
   ghostMaterial: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
   ghostObject: {fileID: 5003431556994757550}
@@ -96,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7a57c38f5deb244bc5501f8cbed722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePower: 5
   fireDelay: 2
   fireRange: 6
   targetLayer:

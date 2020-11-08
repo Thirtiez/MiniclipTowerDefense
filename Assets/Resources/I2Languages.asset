@@ -153,6 +153,38 @@ MonoBehaviour:
       - Sei sicuro di voler uscire?
       Flags: 0000
       Languages_Touch: []
+    - Term: GuardTowerName
+      TermType: 0
+      Description: 
+      Languages:
+      - Guard
+      - Guardia
+      Flags: 0000
+      Languages_Touch: []
+    - Term: SniperTowerName
+      TermType: 0
+      Description: 
+      Languages:
+      - Sniper
+      - Cecchino
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MortarTowerName
+      TermType: 0
+      Description: 
+      Languages:
+      - Mortar
+      - Mortaio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MineTowerName
+      TermType: 0
+      Description: 
+      Languages:
+      - Mine
+      - Mina
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
